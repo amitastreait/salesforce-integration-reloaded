@@ -1,36 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-    <types>
-        <members>*</members>
-        <name>ApexClass</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexComponent</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexPage</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexTestSuite</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexTrigger</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>AuraDefinitionBundle</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>LightningComponentBundle</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>StaticResource</name>
-    </types>
-    <version>59.0</version>
+	<types>
+		<members>Facebook_Config__mdt</members>
+		<members>Google_Config__mdt</members>
+		<members>LinkedIn_Config__mdt</members>
+		<members>PS_SalesforceConfig__c</members>
+		<members>Spotify__mdt</members>
+		<members>TestMetadata__mdt</members>
+		<members>Twitter__mdt</members>
+		<members>qb_Metadata__mdt</members>
+		<members>sfdc_Config__mdt</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>Facebook_Config__mdt-Facebook Config Layout</members>
+		<members>Google_Config__mdt-Google Config Layout</members>
+		<members>LinkedIn_Config__mdt-LinkedIn Config Layout</members>
+		<members>PS_SalesforceConfig__c-Salesforce Config Layout</members>
+		<members>Spotify__mdt-Spotify Layout</members>
+		<members>TestMetadata__mdt-Test Metadata Layout</members>
+		<members>Twitter__mdt-Twitter Layout</members>
+		<members>qb_Metadata__mdt-Quickbooks Layout</members>
+		<members>sfdc_Config__mdt-Salesforce Config Layout</members>
+		<name>Layout</name>
+	</types>
+	<types>
+		<members>Password_Never_Expires</members>
+		<members>Salesforce_Integration_Object</members>
+		<name>PermissionSet</name>
+	</types>
+	<version>60.0</version>
 </Package>

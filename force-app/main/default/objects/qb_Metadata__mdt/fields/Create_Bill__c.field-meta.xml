@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Create_Bill__c</fullName>
+    <defaultValue>&quot;/v3/company/{realmId}/bill?minorversion=&quot;</defaultValue>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Create Bill</label>
+    <required>false</required>
+    <type>Url</type>
+</CustomField>

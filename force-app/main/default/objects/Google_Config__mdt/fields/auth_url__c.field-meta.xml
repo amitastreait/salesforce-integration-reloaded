@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>auth_url__c</fullName>
+    <defaultValue>&quot;https://accounts.google.com/o/oauth2/v2/auth&quot;</defaultValue>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>auth url</label>
+    <required>false</required>
+    <type>Url</type>
+</CustomField>
