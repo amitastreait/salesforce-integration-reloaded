@@ -1,0 +1,37 @@
+<apex:page id="thePage" lightningStylesheets="true" showHeader="true" controller="Assignment_GoogleAPITokenUtils" >
+   <script>
+      window.onload = function(){
+          let code  =   '{!$CurrentPage.parameters.code}';
+          if( code ){
+              fetchAccessToken();
+          }
+      }
+  </script>
+  <apex:form id="theForm" >
+      <apex:outputPanel id="errorMessage">
+      </apex:outputPanel>
+      <apex:pageMessages ></apex:pageMessages>
+      <apex:actionstatus id="theStatus">
+        <apex:facet name="start">
+            <div class="waitingSearchDiv" id="el_loading" 
+                 style="background-color: #fbfbfb; height:100%;opacity:0.65;width:100%;">
+                <div class="waitingHolder" style="top: 100px; width: 91px;">
+                <img class="waitingImage" src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!sw800" title="Please Wait..." />
+                <span class="waitingDescription">Loading...</span>
+                </div>
+            </div>
+        </apex:facet>
+     </apex:actionstatus>
+    
+    <apex:actionFunction name="fetchAccessToken" status="theStatus errorMessage"
+                        action="{!getAccessToken}" reRender="theForm" />
+                        
+    <apex:pageBlock >
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Authorize Google Account" status="theStatus errorMessage" 
+				action="{!getAuthCode}" />
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+      
+  </apex:form>
+</apex:page>

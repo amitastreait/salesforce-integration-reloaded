@@ -1,0 +1,89 @@
+<template>
+    <lightning-card variant="Narrow" title="Manage Countries" icon-name="custom:custom76">
+        <lightning-spinner alternative-text="Loading" size="small" variant="brand" if:true={isLoading} ></lightning-spinner>
+        <lightning-button label="Create Records" value="Create Records" variant="brand" slot="actions" onclick={handleDeploy} ></lightning-button>
+        <div class="slds-m-around_large">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" aria-label="Countries Records">
+                <thead>
+                   <tr class="slds-line-height_reset">
+                      <th class="" scope="col">
+                         <div class="slds-truncate" title="Name">Name</div>
+                      </th>
+                      <th class="" scope="col">
+                         <div class="slds-truncate" title="Country Code">Country Code</div>
+                      </th>
+                      <th class="" scope="col">
+                         <div class="slds-truncate" title="Currency Symbol">Currency Symbol</div>
+                      </th>
+                      <th class="" scope="col">
+                         <div class="slds-truncate" title="ISO Code">ISO Code</div>
+                      </th>
+                      <th class="" scope="col">
+                         <div class="slds-truncate" title="Flag">Flag</div>
+                      </th>
+                      <th class="" scope="col">
+                         <div class="slds-truncate" title="latitude">latitude</div>
+                      </th>
+                      <th class="" scope="col">
+                         <div class="slds-truncate" title="longitude">longitude</div>
+                      </th>
+                      <th class="" scope="col">
+                        <div class="slds-truncate" title="Actions">Actions</div>
+                     </th>
+                   </tr>
+                </thead>
+                <tbody>
+                    <template if:true={records} for:each={records} for:item="record" for:index="index">
+                        <tr key={record.Id} class="slds-hint-parent">
+                            <th data-label="Country Name" scope="row">
+                                <div class="slds-truncate" title="Country Name">
+                                    <lightning-input type="text" variant="label-hidden" data-name="MasterLabel" value={record.MasterLabel} data-index={index} required onchange={handleChange} ></lightning-input>
+                                </div>
+                            </th>
+                            <td data-label="Country Code">
+                               <div class="slds-truncate" title="Country Code">
+                                    <lightning-input type="text" variant="label-hidden" data-name="CurrencyCode__c" value={record.CurrencyCode__c} data-index={index} required onchange={handleChange} ></lightning-input>
+                               </div>
+                            </td>
+                            <td data-label="Country Symbol">
+                               <div class="slds-truncate" title="Currency Symbol">
+                                    <lightning-input type="text" variant="label-hidden" data-name="CurrencySymbol__c" value={record.CurrencySymbol__c} data-index={index} required onchange={handleChange} ></lightning-input>
+                               </div>
+                            </td>
+                            <td data-label="ISO Code">
+                               <div class="slds-truncate" title="ISOCode__c">
+                                    <lightning-input type="text" variant="label-hidden" data-name="ISOCode__c" value={record.ISOCode__c} data-index={index} required onchange={handleChange} ></lightning-input>
+                               </div>
+                            </td>
+                            <td data-label="Flag">
+                               <div class="slds-truncate" title="Flag">
+                                <lightning-input type="text" variant="label-hidden" data-name="Flag__c" value={record.Flag__c} data-index={index} required onchange={handleChange} ></lightning-input>
+                               </div>
+                            </td>
+                            <td data-label="latitude">
+                               <div class="slds-truncate" title="latitude">
+                                    <lightning-input type="number" step="0.00001" variant="label-hidden" value={record.latitude__c} data-name="latitude__c" data-index={index} required onchange={handleChange} ></lightning-input>
+                               </div>
+                            </td>
+                            <td data-label="longitude">
+                               <div class="slds-truncate" title="longitude">
+                                    <lightning-input type="number" step="0.00001" variant="label-hidden" value={record.longitude__c} data-name="longitude__c" data-index={index} required onchange={handleChange} ></lightning-input>
+                               </div>
+                            </td>
+                            <td data-label="actions">
+                                <div class="slds-truncate" title="Actions">
+                                    <lightning-button data-index={index} variant="brand" icon-name="utility:add" onclick={handleRowAdd}></lightning-button>
+                                    <lightning-button lwc:if={index} data-index={index} variant="destructive" icon-name="utility:delete" onclick={handleRowDelete}></lightning-button>
+                                </div>
+                            </td>
+                         </tr>
+                    </template>
+                   
+                </tbody>
+             </table>             
+        </div>
+        <div slot="footer">
+            Card Footer
+        </div>
+    </lightning-card>
+</template>

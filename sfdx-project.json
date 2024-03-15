@@ -3,6 +3,22 @@
     {
       "path": "force-app",
       "default": true
+    },
+    {
+      "path": "assignments/country-metadata",
+      "default": false
+    },
+    {
+      "path": "assignments/google-api",
+      "default": false
+    },
+    {
+      "path": "assignments/zendesk",
+      "default": false
+    },
+    {
+      "path": "project",
+      "default": false
     }
   ],
   "name": "salesforce-integration-reloaded",

@@ -2,10 +2,13 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>All</fullName>
     <columns>NAME</columns>
-    <columns>PS_Environment__c</columns>
-    <columns>PS_ExpiresInTime__c</columns>
-    <columns>PS_InstanceUrl__c</columns>
-    <columns>PS_TokenUrl__c</columns>
+    <columns>Email__c</columns>
+    <columns>Locale__c</columns>
+    <columns>Role__c</columns>
+    <columns>TimeZone__c</columns>
+    <columns>Verified__c</columns>
+    <columns>Active__c</columns>
+    <columns>Agent__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>
