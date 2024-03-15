@@ -1,0 +1,35 @@
+/* googleDriveFoldersList.css */
+.slds-tile {
+    border: 1px solid #d8dde6;
+    border-radius: 0.25rem;
+    margin: 0.5rem;
+    padding: 1rem;
+    background-color: #f3f4f6;
+    min-width: 200px; /* Set minimum width for tiles */
+}
+
+.slds-tile__title {
+    font-weight: bold;
+    font-size: 1rem;
+    display: flex;
+    align-items: center; /* Align icon and text vertically */
+}
+
+.icon {
+    width: 24px; /* Adjust icon size as needed */
+    height: 24px;
+    margin-right: 0.5rem; /* Add spacing between icon and text */
+}
+
+/* Adjust space between tiles based on your preference */
+.slds-grid {
+    margin: -0.5rem;
+}
+
+.slds-wrap > .slds-col {
+    padding: 0.5rem;
+}
+
+.file-tile:hover{
+    cursor: pointer;
+}

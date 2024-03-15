@@ -1,0 +1,16 @@
+<!-- driveFileExplorer.html -->
+<template>
+    <lightning-spinner alternative-text="Loading" size="small" variant="brand" if:true={isLoading}></lightning-spinner>
+
+    <div class="slds-m-around_small slds-grid slds-wrap">
+        <template lwc:if={files} for:each={files} for:item="file" for:index="index">
+            <div if:false={file.isFolder} key={file.fileId} class="slds-col slds-size_1-of-3">
+                <c-drive-file file={file}></c-drive-file>
+            </div>
+            <div if:true={file.isFolder} key={file.fileId} class="slds-col slds-size_1-of-3">
+                <c-drive-folder folder={file} ></c-drive-folder>
+            </div>
+        </template>
+    </div>
+
+</template>

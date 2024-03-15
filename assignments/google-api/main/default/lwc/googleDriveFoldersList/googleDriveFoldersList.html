@@ -1,0 +1,42 @@
+<!-- googleDriveFoldersList.html -->
+<template>
+    <lightning-card  variant="Narrow" title="Google Drive Files" icon-name="standard:file">
+
+        <lightning-spinner alternative-text="Loading" size="small" variant="brand" if:true={isLoading}></lightning-spinner>
+        <lightning-breadcrumbs>
+            <template for:each={myBreadcrumbs} for:item="crumbs">
+                <lightning-breadcrumb
+                    key={crumbs.id}
+                    label={crumbs.label}
+                    name={crumbs.name}
+                    onclick={handleNavigateTo}>
+                </lightning-breadcrumb>
+            </template>
+        </lightning-breadcrumbs>
+
+        <div if:false={selectedFolderItems} class="slds-grid slds-wrap">
+            <template for:each={folders} for:item="folder">
+                <div key={folder.folderId} class="slds-col slds-size_1-of-4">
+                    <article class="slds-tile">
+                        <h3 onclick={handleFolderClick} data-folder-id={folder.folderId} data-folder-name={folder.name}
+                            class="slds-tile__title slds-truncate file-tile">
+                            <img width="240" height="240"
+                                src="https://img.icons8.com/color/240/folder-invoices--v1.png"
+                                alt="folder-invoices--v1"/>
+                        </h3>
+                        <div class="slds-tile__detail">
+                            <!-- Add any additional folder details here -->
+                            {folder.name}
+                        </div>
+                    </article>
+                </div>
+            </template>
+        </div>
+
+        <!-- Display files and subfolders inside the selected folder -->
+        <div if:true={selectedFolderItems}>
+            <c-drive-file-explorer files={selectedFolderItems}></c-drive-file-explorer>
+        </div>
+
+    </lightning-card>
+</template>

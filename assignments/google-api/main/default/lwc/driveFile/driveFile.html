@@ -1,0 +1,37 @@
+<template>
+    <div style="width:20rem" class="slds-p-around_small">
+        <div class="slds-file slds-file_card slds-has-title">
+           <figure>
+              <a href="JavaScript:void(0);" class="slds-file__crop">
+                <span class="slds-assistive-text">Preview:</span>
+                <img src={file.thumbnailUrl} alt={file.name} />
+              </a>
+              <figcaption class="slds-file__title slds-file__title_card slds-file-has-actions">
+                 <div class="slds-media slds-media_small slds-media_center">
+                    <div class="slds-media__figure slds-line-height_reset">
+                       <span class="slds-icon_container" title={docType}>
+                          <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                             <use xlink:href={icon}></use>
+                          </svg>
+                          <span class="slds-assistive-text">{docType}</span>
+                       </span>
+                    </div>
+                    <div class="slds-media__body">
+                       <span class="slds-file__text slds-truncate" title={file.name}>{file.name}</span>
+                    </div>
+                 </div>
+              </figcaption>
+           </figure>
+           <div class="slds-file__actions-menu">
+              <div class="slds-button-group" role="group">
+                 <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-x-small" title="Download">
+                    <svg class="slds-button__icon" aria-hidden="true">
+                       <use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#download"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Download</span>
+                 </button>
+              </div>
+           </div>
+        </div>
+     </div>     
+</template>

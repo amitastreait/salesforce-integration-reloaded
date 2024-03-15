@@ -1,0 +1,17 @@
+<!-- uploadFileToGoogleDrive.html -->
+<template>
+    <lightning-card title="Upload File to Google Drive" icon-name="standard:file">
+        <div class="slds-m-around_large">
+            <div if:true={isLoading}>
+                <lightning-spinner alternative-text="Uploading..." size="small"></lightning-spinner>
+            </div>
+            <div if:false={isLoading}>
+                <lightning-input type="file" label="Select File" onchange={handleFileChange}></lightning-input>
+                <template if:true={file}>
+                    <p>Selected File: {file.name} </p>
+                </template>
+                <lightning-button label="Upload" onclick={uploadFile}></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>
