@@ -33,6 +33,7 @@
 		<members>Twitter__mdt</members>
 		<members>qb_Metadata__mdt</members>
 		<members>sfdc_Config__mdt</members>
+		<members>PKCEHelper__c</members>
 		<name>CustomObject</name>
 	</types>
 	<types>
@@ -50,6 +51,7 @@
 		<members>Twitter__mdt-Twitter Layout</members>
 		<members>qb_Metadata__mdt-Quickbooks Layout</members>
 		<members>sfdc_Config__mdt-Salesforce Config Layout</members>
+		<members>PKCEHelper__c-PKCE Helper Layout</members>
 		<name>Layout</name>
 	</types>
 	<types>
