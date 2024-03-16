@@ -1,13 +1,13 @@
 public with sharing class PS_ZendeskTicketUtils {
 
     /*
-    PS_ZendeskTicketUtils.TicektWrapper wrapper = new PS_ZendeskTicketUtils.TicektWrapper();
-    wrapper.body = 'Dynamic body';
-    wrapper.subject = 'Testing from Salesforce Apex!';
-    wrapper.priority = 'urgent';
-    wrapper.name = 'Amit Singh';
-    wrapper.email = 'asingh@example.org';
-    PS_ZendeskTicketUtils.createTicket(wrapper);
+        PS_ZendeskTicketUtils.TicektWrapper wrapper = new PS_ZendeskTicketUtils.TicektWrapper();
+        wrapper.body = 'Dynamic body';
+        wrapper.subject = 'Testing from Salesforce Apex!';
+        wrapper.priority = 'urgent';
+        wrapper.name = 'Amit Singh';
+        wrapper.email = 'asingh@example.org';
+        PS_ZendeskTicketUtils.createTicket(wrapper);
     */
 
     public class TicektWrapper {
