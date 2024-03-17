@@ -1,4 +1,3 @@
-// GoogleDriveFolderController.js
 import { LightningElement, wire } from 'lwc';
 import fetchFolders from '@salesforce/apex/GoogleDriveFolderController.fetchFolders';
 import fetchFilesFromGoogleDrive from '@salesforce/apex/GoogleDriveIntegration.fetchFilesFromGoogleDrive';
@@ -19,7 +18,13 @@ export default class GoogleDriveFoldersList extends LightningElement {
     handleNavigateTo(event) {
         event.preventDefault();
         const name = event.target.name;
-        console.log(name);
+        
+        if(name === 'home'){
+            this.selectedFolderItems = '';
+            this.myBreadcrumbs = [
+                { label: 'Home', name: 'home', id: 'home' },
+            ];
+        }
     }
 
     @wire(fetchFolders)
@@ -52,6 +57,7 @@ export default class GoogleDriveFoldersList extends LightningElement {
     async fetchFilesAndSubfolders(folderId) {
         try {
             const result = await fetchFilesFromGoogleDrive({ folderId: folderId });
+            console.log(result);
             this.selectedFolderItems = result.map(file => ({
                 name: file.name,
                 itemId: file.fileName,
@@ -59,11 +65,23 @@ export default class GoogleDriveFoldersList extends LightningElement {
                 thumbnailUrl: file.thumbnailUrl,
                 isFolder : file.mimeType === 'application/vnd.google-apps.folder'
             }));
-            console.log(JSON.stringify(this.selectedFolderItems, null, 2));
             this.isLoading = false;
+            //console.log(JSON.stringify(selectedFolderItems));
         } catch (error) {
-            console.error('Error fetching files and subfolders:', error);
+            console.error('Error fetching files and subfolders:', JSON.stringify(error));
             this.isLoading = false;
         }
+    }
+
+    handleFolderClickSelect(event){
+        event.preventDefault();
+        this.isLoading = true;
+        let details = event.detail;
+        this.myBreadcrumbs.push({
+            label : details.name,
+            name : details.folderId,
+            id: details.folderId
+        })
+        this.fetchFilesAndSubfolders(details.folderId);
     }
 }

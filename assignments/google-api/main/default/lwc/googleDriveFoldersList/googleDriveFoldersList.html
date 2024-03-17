@@ -35,7 +35,7 @@
 
         <!-- Display files and subfolders inside the selected folder -->
         <div if:true={selectedFolderItems}>
-            <c-drive-file-explorer files={selectedFolderItems}></c-drive-file-explorer>
+            <c-drive-file-explorer onselect={handleFolderClickSelect} files={selectedFolderItems}></c-drive-file-explorer>
         </div>
 
     </lightning-card>

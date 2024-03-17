@@ -1,4 +1,5 @@
 <template>
+   <lightning-spinner alternative-text="Loading" size="small" variant="brand" if:true={isLoading}></lightning-spinner>
     <div style="width:20rem" class="slds-p-around_small">
         <div class="slds-file slds-file_card slds-has-title">
            <figure>
@@ -24,7 +25,7 @@
            </figure>
            <div class="slds-file__actions-menu">
               <div class="slds-button-group" role="group">
-                 <button class="slds-button slds-button_icon slds-button_icon slds-button_icon-x-small" title="Download">
+                 <button onclick={handleDownload} class="slds-button slds-button_icon slds-button_icon slds-button_icon-x-small" title="Download">
                     <svg class="slds-button__icon" aria-hidden="true">
                        <use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#download"></use>
                     </svg>

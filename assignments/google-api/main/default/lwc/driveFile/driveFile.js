@@ -1,9 +1,11 @@
 import { LightningElement, api } from 'lwc';
-
+import downloadFile from '@salesforce/apex/GoogleDriveFolderController.downloadFile';
 export default class DriveFile extends LightningElement {
+
     @api file;
     iconUrl = '/apexpages/slds/latest/assets/icons/doctype-sprite/svg/symbols.svg#';
     docType;
+    isLoading = false;
 
     getFileExtension(fileName) {
         return fileName.split('.').pop();
@@ -79,6 +81,22 @@ export default class DriveFile extends LightningElement {
                 break;
         }
         return this.iconUrl+this.docType;
+    }
+
+    handleDownload(event){
+        event.preventDefault();
+        this.isLoading = true;
+        
+        downloadFile({ fileId : this.file.itemId })
+        .then(result => {
+            window.location.assign(result);
+        })
+        .catch(error => {
+            console.error('Error: ', error);
+        })
+        .finally(()=>{
+            this.isLoading = false;
+        })
     }
     
 }

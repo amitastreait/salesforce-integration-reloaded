@@ -8,7 +8,7 @@
                 <c-drive-file file={file}></c-drive-file>
             </div>
             <div if:true={file.isFolder} key={file.fileId} class="slds-col slds-size_1-of-3">
-                <c-drive-folder folder={file} ></c-drive-folder>
+                <c-drive-folder onselect={handleFolderClick} folder={file} ></c-drive-folder>
             </div>
         </template>
     </div>
