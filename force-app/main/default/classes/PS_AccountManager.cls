@@ -1,8 +1,8 @@
 /**
  * @description       : 
  * @author            : Amit Singh - PantherSchools
- * @group             : 
- * @last modified on  : 03-17-2024
+ * @group             : PantherSchools
+ * @last modified on  : 03-31-2024
  * @last modified by  : Amit Singh - PantherSchools
 **/
 
@@ -17,21 +17,46 @@ global with sharing class PS_AccountManager {
      * @httpGet - GET
      * @httpPost - POST
      * @httpPut - PUT
-     * @hpptPatch - PATCH
-     * @delete - DELETE
+     * @httpPatch - PATCH
+     * @httpDelete - DELETE
      */
     
+    @httpDelete
+    global static void deleteRecords(){
+        String accountId = RestContext.request.requestURI.substringAfterLast('/');
+        Database.delete(accountId);
+    }
+
     /** List all the Salesforce Accounts  - GET */
+    // /v1/PS_AccountManager/001Hu000038SWuZIAW/Contacts
     @httpGet
-    global static List<Account> getAccountList(){
+    global static Account getAccountList(){
 
         RestRequest req  = RestContext.request;
         System.debug(System.JSON.serializePretty(req));
 
         RestResponse res = RestContext.response;
         System.debug(System.JSON.serializePretty(res));
+        // /v1/PS_AccountManager/001Hu000038vjRiIAI
+        /**
+         * 1 - Get the Account ID from URL 
+         *  1.1 - get last index of / 
+         *  1.2 - use the substring method of your String Apex Class
+         * 1.1.1
+         *  - subStringAfterLast method of your String class
+         * 2 - Query the Account with all the Informaton
+         */
+        String accountId = req.requestURI.substringAfterLast('/');
 
-        return [SELECT Id, Name, Industry, Phone, Fax FROM Account LIMIT 10];
+        Account accRecord = [SELECT 
+                                Id, Name, Rating, Phone, Fax, Industry, BillingAddress, ShippingAddress
+                                FROM 
+                                    Account
+                                WHERE
+                                    Id =: accountId
+                                LIMIT 1
+                            ];
+        return accRecord;
 
     }
     
@@ -46,11 +71,10 @@ global with sharing class PS_AccountManager {
         
         /** get the request body */
         String requeBody = req.requestBody?.toString(); // Convert Blob into String format
-        System.debug( requeBody );
+        System.debug( requeBody ); // JSON Format
 
         RestResponse res = RestContext.response;
         System.debug(System.JSON.serializePretty(res));
-        //PS_AccountService.formatString(null);
 
         if(String.isBlank(requeBody)){
             res.statusCode = 400;
@@ -63,5 +87,15 @@ global with sharing class PS_AccountManager {
         acc.Phone    = '98876655623';
         
         return acc;
+    }
+    
+    public class AccountWrapper {
+        public String id;
+        public String name;
+        public BillingAddress billigAddress;
+    }
+
+    public class BillingAddress {
+        public String city;
     }
 }

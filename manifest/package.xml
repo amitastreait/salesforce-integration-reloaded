@@ -52,6 +52,7 @@
 		<members>qb_Metadata__mdt-Quickbooks Layout</members>
 		<members>sfdc_Config__mdt-Salesforce Config Layout</members>
 		<members>PKCEHelper__c-PKCE Helper Layout</members>
+		<members>zoom_Metadata__mdt-Zoom Layout</members>
 		<name>Layout</name>
 	</types>
 	<types>

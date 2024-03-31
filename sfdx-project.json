@@ -1,5 +1,13 @@
 {
-  "packageDirectories": [
+  "packageDirectories": [ 
+    {
+      "path": "assignments/apex-rest",
+      "default": false
+    },
+    {
+      "path": "assignments/zoom",
+      "default": false
+    },
     {
       "path": "force-app",
       "default": true
