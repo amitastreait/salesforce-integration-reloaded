@@ -12,6 +12,7 @@
 		<members>PS_CalendarEmail</members>
 		<members>PS_GoogleTokenLabel</members>
 		<members>PS_SalesforceTokenLabel</members>
+		<members>PS_ZoomTokenLabel</members>
 		<members>Zendesk_APITOKEN</members>
 		<members>Zendesk_Username</members>
 		<name>CustomLabel</name>
@@ -22,18 +23,25 @@
 	</types>
 	<types>
 		<members>Agent__c</members>
+		<members>Booking__c</members>
 		<members>Country__mdt</members>
+		<members>CourseImage__c</members>
+		<members>CourseRating__c</members>
+		<members>Course__c</members>
 		<members>Facebook_Config__mdt</members>
 		<members>Google_Config__mdt</members>
 		<members>LinkedIn_Config__mdt</members>
 		<members>MetadataDeploymentResult__e</members>
+		<members>PKCEHelper__c</members>
 		<members>PS_SalesforceConfig__c</members>
+		<members>ScheduledCourse__c</members>
 		<members>Spotify__mdt</members>
 		<members>TestMetadata__mdt</members>
+		<members>Trainer__c</members>
+		<members>TrainingCenter__c</members>
 		<members>Twitter__mdt</members>
 		<members>qb_Metadata__mdt</members>
 		<members>sfdc_Config__mdt</members>
-		<members>PKCEHelper__c</members>
 		<name>CustomObject</name>
 	</types>
 	<types>
@@ -41,17 +49,25 @@
 		<name>CustomTab</name>
 	</types>
 	<types>
+		<members>Agent__c-Agent Layout</members>
+		<members>Booking__c-Booking Layout</members>
 		<members>Country__mdt-Countries Layout</members>
+		<members>CourseImage__c-Course Image Layout</members>
+		<members>CourseRating__c-Course Rating Layout</members>
+		<members>Course__c-Course Layout</members>
 		<members>Facebook_Config__mdt-Facebook Config Layout</members>
 		<members>Google_Config__mdt-Google Config Layout</members>
 		<members>LinkedIn_Config__mdt-LinkedIn Config Layout</members>
+		<members>PKCEHelper__c-PKCE Helper Layout</members>
 		<members>PS_SalesforceConfig__c-Salesforce Config Layout</members>
+		<members>ScheduledCourse__c-Scheduled Course Layout</members>
 		<members>Spotify__mdt-Spotify Layout</members>
 		<members>TestMetadata__mdt-Test Metadata Layout</members>
+		<members>Trainer__c-Trainer Layout</members>
+		<members>TrainingCenter__c-Training Center Layout</members>
 		<members>Twitter__mdt-Twitter Layout</members>
 		<members>qb_Metadata__mdt-Quickbooks Layout</members>
 		<members>sfdc_Config__mdt-Salesforce Config Layout</members>
-		<members>PKCEHelper__c-PKCE Helper Layout</members>
 		<members>zoom_Metadata__mdt-Zoom Layout</members>
 		<name>Layout</name>
 	</types>
@@ -71,6 +87,7 @@
 		<members>ProdTokenEndpoint</members>
 		<members>SandboxTokenEndpoint</members>
 		<members>Zendesk</members>
+		<members>ZoomToken</members>
 		<name>RemoteSiteSetting</name>
 	</types>
 	<version>58.0</version>

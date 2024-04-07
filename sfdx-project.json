@@ -9,6 +9,10 @@
       "default": false
     },
     {
+      "path": "assignments/sharepoint",
+      "default": false
+    },
+    {
       "path": "force-app",
       "default": true
     },

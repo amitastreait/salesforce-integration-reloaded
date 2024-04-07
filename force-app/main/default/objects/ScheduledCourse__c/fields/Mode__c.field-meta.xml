@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mode__c</fullName>
+    <externalId>false</externalId>
+    <label>Mode</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Classroom Training</fullName>
+                <default>false</default>
+                <label>Classroom Training</label>
+            </value>
+            <value>
+                <fullName>Virtual Training</fullName>
+                <default>false</default>
+                <label>Virtual Training</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

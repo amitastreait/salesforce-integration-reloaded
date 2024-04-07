@@ -13,6 +13,21 @@
 
 @RestResource(urlMapping = '/v1/PS_ContactManager/*')
 global with sharing class PS_ContactManager {
+
+    @httpPatch
+    global static Contact updateContact(){
+        RestRequest req  = RestContext.request;
+        System.debug(System.JSON.serializePretty(req));
+
+        RestResponse res = RestContext.response;
+        System.debug(System.JSON.serializePretty(res));
+
+        String accountId = req.requestURI.substringAfterLast('/');
+
+        Contact contactRecord = (Contact) JSON.deserialize(req.requestBody.toString(), Contact.class);
+
+        return contactRecord;
+    }
     
     @httpGet
     global static List<Contact> listContacts(){

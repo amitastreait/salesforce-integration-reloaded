@@ -5,7 +5,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>OPENCAGE_API_KEY</shortDescription>
-        <value>1badb7d9b4a6bd0b3d7</value>
+        <value>ju0a9xOiKqBWCumQ0</value>
     </labels>
     <labels>
         <fullName>OPENCAGE_API_URL</fullName>
@@ -43,11 +43,18 @@
         <value>PS_SalesforceToken</value>
     </labels>
     <labels>
+        <fullName>PS_ZoomTokenLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PS_ZoomTokenLabel</shortDescription>
+        <value>PS_ZoomToken</value>
+    </labels>
+    <labels>
         <fullName>Zendesk_APITOKEN</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Zendesk_APITOKEN</shortDescription>
-        <value>ju0a9xOiKqBWCumQ0</value>
+        <value>87xOiKqBW3xOiKqBW45</value>
     </labels>
     <labels>
         <fullName>Zendesk_Username</fullName>

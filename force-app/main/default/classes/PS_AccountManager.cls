@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Amit Singh - PantherSchools
  * @group             : PantherSchools
- * @last modified on  : 03-31-2024
+ * @last modified on  : 04-06-2024
  * @last modified by  : Amit Singh - PantherSchools
 **/
 
@@ -58,6 +58,27 @@ global with sharing class PS_AccountManager {
                             ];
         return accRecord;
 
+    }
+
+    @httpPatch
+    global static Account updateAccount(){
+        RestRequest req  = RestContext.request;
+        String accountId = req.requestURI.substringAfterLast('/');
+        String request = req.requestBody.toString();
+        Map<String,String> urlParams = req.params;
+        // _HttpMethod=PATCH&name=Amit Singh
+        // '_HttpMethod' => PATCH
+        // 'name' => Amit Singh
+        Map<String,String> headersMap = req.headers;
+        Map<String, Object> responseMap = (Map<String, Object>)JSON.deserializeUntyped(request);
+        // Name, Active, Industry
+        Account accountToUpdate   = new Account(Id = accountId);
+        accountToUpdate.Name      = (String)responseMap.get('accountName');
+        accountToUpdate.Active__c = (String)responseMap.get('active');
+        accountToUpdate.Industry  = (String)responseMap.get('accountIndustry');
+        accountToUpdate.AnnualRevenue  = (Decimal)responseMap.get('AnnualRevenue');
+        Database.update(accountToUpdate);
+        return accountToUpdate;
     }
     
     /** Create an Account - POST */
