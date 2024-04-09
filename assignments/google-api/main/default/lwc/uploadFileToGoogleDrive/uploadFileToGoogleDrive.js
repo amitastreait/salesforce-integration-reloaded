@@ -64,12 +64,18 @@ export default class UploadFileToGoogleDrive extends LightningElement {
                 let folderId = '198OxY8bJC7B13wJAQDZ7W3Fm2jteELW_'; // Provide the Google Drive folder ID
                 let fileName = this.file.name;
 
-                /*let lastIndex = fileName.lastIndexOf('.');
+                let lastIndex = fileName.lastIndexOf('.');
                 let fileExt = fileName.substring(lastIndex + 1).toLowerCase();
+                console.log(fileExt);
                 let contentType = this.getFileContentType(fileExt);
-                console.log(contentType);*/
+                console.log(contentType);
                 
-                uploadFileToGoogleDrive({ folderId: folderId, fileName: fileName, base64Data: base64Data })
+                uploadFileToGoogleDrive({
+                    folderId: folderId,
+                    fileName: fileName,
+                    base64Data: base64Data,
+                    contentType: contentType
+                })
                     .then(result => {
                         console.log(result);
                     })
@@ -87,12 +93,9 @@ export default class UploadFileToGoogleDrive extends LightningElement {
     }
 
     getFileContentType(fileExtension){
-        // Convert file extension to lowercase for case-insensitive comparison
         fileExtension = fileExtension.toLowerCase();
-
-        // Look up content type in the map
         if (this.contentTypeMap.hasOwnProperty(fileExtension)) {
-            return contentTypeMap[fileExtension];
+            return this.contentTypeMap[fileExtension];
         } else {
             // Default to application/octet-stream if content type is not found
             return 'application/octet-stream';
