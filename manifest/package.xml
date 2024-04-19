@@ -22,6 +22,11 @@
 		<name>CustomLabels</name>
 	</types>
 	<types>
+		<members>Agent__c</members>
+		<members>Booking__c</members>
+		<members>CourseImage__c</members>
+		<members>CourseRating__c</members>
+		<members>Course__c</members>
 		<members>Currency__c</members>
 		<members>Employ__c</members>
 		<members>Facebook_Config__mdt</members>
@@ -31,9 +36,15 @@
 		<members>LinkedIn_Config__mdt</members>
 		<members>LinkedIn_Post__c</members>
 		<members>LogoutEvent__c</members>
+		<members>PKCEHelper__c</members>
+		<members>PS_SalesforceConfig__c</members>
+		<members>ScheduledCourse__c</members>
 		<members>Spotify__mdt</members>
 		<members>TestMetadata__mdt</members>
+		<members>Trainer__c</members>
+		<members>TrainingCenter__c</members>
 		<members>Twitter__mdt</members>
+		<members>qb_Customer__c</members>
 		<members>qb_Employee__c</members>
 		<members>qb_Invoice_Line__c</members>
 		<members>qb_Invoice__c</members>
@@ -47,6 +58,11 @@
 		<name>CustomTab</name>
 	</types>
 	<types>
+		<members>Agent__c-Agent Layout</members>
+		<members>Booking__c-Booking Layout</members>
+		<members>CourseImage__c-Course Image Layout</members>
+		<members>CourseRating__c-Course Rating Layout</members>
+		<members>Course__c-Course Layout</members>
 		<members>Currency__c-Currency Layout</members>
 		<members>Employ__c-Employ Layout</members>
 		<members>Facebook_Config__mdt-Facebook Config Layout</members>
@@ -56,9 +72,15 @@
 		<members>LinkedIn_Config__mdt-LinkedIn Config Layout</members>
 		<members>LinkedIn_Post__c-LinkedIn Post Layout</members>
 		<members>LogoutEvent__c-LogoutEvent Layout</members>
+		<members>PKCEHelper__c-PKCE Helper Layout</members>
+		<members>PS_SalesforceConfig__c-Salesforce Config Layout</members>
+		<members>ScheduledCourse__c-Scheduled Course Layout</members>
 		<members>Spotify__mdt-Spotify Layout</members>
 		<members>TestMetadata__mdt-Test Metadata Layout</members>
+		<members>Trainer__c-Trainer Layout</members>
+		<members>TrainingCenter__c-Training Center Layout</members>
 		<members>Twitter__mdt-Twitter Layout</members>
+		<members>qb_Customer__c-QuickBooks Customer Layout</members>
 		<members>qb_Employee__c-Quickbooks Employee Layout</members>
 		<members>qb_Invoice_Line__c-Quickbooks Invoice%09Line Layout</members>
 		<members>qb_Invoice__c-Quickbooks Invoice Layout</members>
