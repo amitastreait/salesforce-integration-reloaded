@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>AssetAccountRefName</fullName>
+        <categories>AssetAccountRef</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AssetAccountRefName</shortDescription>
+        <value>Inventory Asset</value>
+    </labels>
+    <labels>
+        <fullName>AssetAccountRefValue</fullName>
+        <categories>AssetAccountRef</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AssetAccountRefValue</shortDescription>
+        <value>81</value>
+    </labels>
+    <labels>
+        <fullName>ExpenseAccountRefName</fullName>
+        <categories>ExpenseAccountRef</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ExpenseAccountRefName</shortDescription>
+        <value>Cost of Goods Sold</value>
+    </labels>
+    <labels>
+        <fullName>ExpenseAccountRefValue</fullName>
+        <categories>ExpenseAccountRef</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ExpenseAccountRefValue</shortDescription>
+        <value>80</value>
+    </labels>
+    <labels>
+        <fullName>IncomeAccountRefName</fullName>
+        <categories>IncomeAccountRef</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>IncomeAccountRefName</shortDescription>
+        <value>Sales of Product Income</value>
+    </labels>
+    <labels>
+        <fullName>IncomeAccountRefValue</fullName>
+        <categories>IncomeAccountRef</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>IncomeAccountRefValue</shortDescription>
+        <value>79</value>
+    </labels>
+    <labels>
         <fullName>OPENCAGE_API_KEY</fullName>
         <language>en_US</language>
         <protected>true</protected>

@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Amit Singh - PantherSchools
  * @group             : 
- * @last modified on  : 04-07-2024
+ * @last modified on  : 04-20-2024
  * @last modified by  : Amit Singh - PantherSchools
 **/
 public with sharing class PS_QBTokenUtil {
@@ -104,7 +104,7 @@ public with sharing class PS_QBTokenUtil {
 
     public static Boolean isValid(qb_Metadata__mdt config){
         Boolean isValid = true;
-        if(config.expires_in_time__c < System.now()){
+        if(config.expires_in_time__c <= System.now()){
             isValid = false;
         }
         return isValid;
@@ -149,6 +149,6 @@ public with sharing class PS_QBTokenUtil {
         if(!String.isBlank(realmId)){
             fieldWithValuesMap.put('realmId__c', realmId);
         }
-        return responseMap;
+        return fieldWithValuesMap;
     }
 }

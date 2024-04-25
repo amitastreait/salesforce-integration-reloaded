@@ -3,9 +3,18 @@
 	<types>
 		<members>Case.Agent__c</members>
 		<members>Case.Zendesk_Ticket_Id__c</members>
+		<members>Product2.QBExternalID__c</members>
+		<members>Product2.Sync_With_QuickBooks__c</members>
+		<members>Product2.Synced_With_Quickbooks__c</members>
 		<name>CustomField</name>
 	</types>
 	<types>
+		<members>AssetAccountRefName</members>
+		<members>AssetAccountRefValue</members>
+		<members>ExpenseAccountRefName</members>
+		<members>ExpenseAccountRefValue</members>
+		<members>IncomeAccountRefName</members>
+		<members>IncomeAccountRefValue</members>
 		<members>OPENCAGE_API_KEY</members>
 		<members>OPENCAGE_API_URL</members>
 		<members>PS_AttendeeEmail</members>
@@ -24,6 +33,7 @@
 	<types>
 		<members>Agent__c</members>
 		<members>Booking__c</members>
+		<members>Country__mdt</members>
 		<members>CourseImage__c</members>
 		<members>CourseRating__c</members>
 		<members>Course__c</members>
@@ -34,8 +44,10 @@
 		<members>Google_Config__mdt</members>
 		<members>Lat_Lang__c</members>
 		<members>LinkedIn_Config__mdt</members>
+		<members>LinkedIn_Post_Comment__c</members>
 		<members>LinkedIn_Post__c</members>
 		<members>LogoutEvent__c</members>
+		<members>MetadataDeploymentResult__e</members>
 		<members>PKCEHelper__c</members>
 		<members>PS_SalesforceConfig__c</members>
 		<members>ScheduledCourse__c</members>
@@ -51,6 +63,7 @@
 		<members>qb_Metadata__mdt</members>
 		<members>qb_Payment__c</members>
 		<members>sfdc_Config__mdt</members>
+		<members>zoom_Metadata__mdt</members>
 		<name>CustomObject</name>
 	</types>
 	<types>
@@ -95,6 +108,7 @@
 	</types>
 	<types>
 		<members>Password_Never_Expires</members>
+		<members>UserExternalCredentialsObjectAccess</members>
 		<members>Salesforce_Integration_Object</members>
 		<name>PermissionSet</name>
 	</types>

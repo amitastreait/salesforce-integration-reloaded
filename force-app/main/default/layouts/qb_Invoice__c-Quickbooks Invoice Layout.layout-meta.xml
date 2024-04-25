@@ -26,6 +26,10 @@
                 <behavior>Edit</behavior>
                 <field>ApplyTaxAfterDiscount__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Send_To_QuickBooks__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
