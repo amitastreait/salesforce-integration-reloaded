@@ -71,6 +71,15 @@
 		<name>CustomTab</name>
 	</types>
 	<types>
+		<members>DataCloudCredentials</members>
+		<members>Freshworks</members>
+		<members>Google</members>
+		<members>MyZoom</members>
+		<members>OpenCageCredentials</members>
+		<members>SomeAPI</members>
+		<name>ExternalCredential</name>
+	</types>
+	<types>
 		<members>Agent__c-Agent Layout</members>
 		<members>Booking__c-Booking Layout</members>
 		<members>CourseImage__c-Course Image Layout</members>
@@ -107,9 +116,13 @@
 		<name>LightningComponentBundle</name>
 	</types>
 	<types>
+		<members>*</members>
+		<name>NamedCredential</name>
+	</types>
+	<types>
 		<members>Password_Never_Expires</members>
-		<members>UserExternalCredentialsObjectAccess</members>
 		<members>Salesforce_Integration_Object</members>
+		<members>UserExternalCredentialsObjectAccess</members>
 		<name>PermissionSet</name>
 	</types>
 	<types>
@@ -117,7 +130,10 @@
 		<members>GoogleAuth</members>
 		<members>OpenCageData</members>
 		<members>ProdTokenEndpoint</members>
+		<members>QBSandbox</members>
+		<members>QBToken</members>
 		<members>SandboxTokenEndpoint</members>
+		<members>SharePoint</members>
 		<members>Zendesk</members>
 		<members>ZoomToken</members>
 		<name>RemoteSiteSetting</name>
