@@ -48,8 +48,10 @@
 		<members>LinkedIn_Post__c</members>
 		<members>LogoutEvent__c</members>
 		<members>MetadataDeploymentResult__e</members>
+		<members>OrderStatus__e</members>
 		<members>PKCEHelper__c</members>
 		<members>PS_SalesforceConfig__c</members>
+		<members>SAP_Account__e</members>
 		<members>ScheduledCourse__c</members>
 		<members>Spotify__mdt</members>
 		<members>TestMetadata__mdt</members>
@@ -78,6 +80,10 @@
 		<members>OpenCageCredentials</members>
 		<members>SomeAPI</members>
 		<name>ExternalCredential</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>Flow</name>
 	</types>
 	<types>
 		<members>Agent__c-Agent Layout</members>
