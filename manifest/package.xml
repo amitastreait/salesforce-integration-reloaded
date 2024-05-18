@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
+		<members>*</members>
+		<name>AuthProvider</name>
+	</types>
+	<types>
 		<members>Case.Agent__c</members>
 		<members>Case.Zendesk_Ticket_Id__c</members>
 		<members>Product2.QBExternalID__c</members>

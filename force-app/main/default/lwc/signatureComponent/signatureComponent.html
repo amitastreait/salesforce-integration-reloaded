@@ -1,0 +1,26 @@
+<template>
+    <lightning-spinner alternative-text="Loading" if:true={isSpinner} size="small" variant="brand"></lightning-spinner>
+    <lightning-card  variant="Narrow" >
+        <div class="slds-p-around_medium">
+            <div class="c-container">
+                <div data-record-id={recordId} style="text-align: center; ">
+                    <h2 class="slds-text-heading_medium slds-var-m-bottom_medium">
+                        Sign Here 👇
+                    </h2>
+                    <div class="slds-var-m-bottom_small">
+                        <canvas name="canvasItem" style="border:2px solid rgb(136, 135, 135); background: transparent;"></canvas>
+                    </div>
+                    <div class="slds-var-m-bottom_small">
+                        <lightning-button variant="brand" label="Capture Signature" title="Capture Signature" 
+                            onclick={handleSaveClick} class="slds-var-m-left_x-small"></lightning-button>
+                        <lightning-button variant="destructive" label="Clear" title="Clear" 
+                            onclick={handleClearClick} class="slds-var-m-left_x-small"></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div slot="footer">
+            <lightning-badge label="Alpha"></lightning-badge>
+        </div>
+    </lightning-card>
+</template>

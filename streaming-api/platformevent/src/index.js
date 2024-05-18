@@ -6,8 +6,8 @@ const port = 3000
 // OAuth2 client information can be shared with multiple connections.
 var oauth2 = new jsforce.OAuth2({
   loginUrl : 'https://login.salesforce.com',
-  clientId : '3MVG9VTfpJmxg1yipdnPEKgkwnCYRymZ1jahTd4EOFeDlUiVt_43usqQ1IQk8mqT1FjuseQiOTHifi8aUb0di',
-  clientSecret : '477270FA2D9B893A80F955F1EA4704EC8BB429978EFED691C19D0671968E8D1A',
+  clientId : 'qT1FjuseQiOTHifi8aUb0di',
+  clientSecret : '477270FA2D9B893A808D1A',
   redirectUri : 'http://localhost:3000/oauth2/callback'
 });
 

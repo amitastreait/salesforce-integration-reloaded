@@ -1,0 +1,15 @@
+{
+  "name": "platformeventstreaming-api",
+  "version": "1.0.0",
+  "description": "This is a test node.js project for platform event streaming api",
+  "main": "app.js",
+  "scripts": {
+    "test": "test app.js"
+  },
+  "author": "Amit Singh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "jsforce": "^1.11.1"
+  }
+}
