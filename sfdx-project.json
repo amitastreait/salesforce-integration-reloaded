@@ -9,6 +9,10 @@
       "default": false
     },
     {
+      "path": "assignments/linkedin",
+      "default": false
+    },
+    {
       "path": "assignments/sharepoint",
       "default": false
     },

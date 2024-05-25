@@ -39,6 +39,7 @@ $RECYCLE.BIN/
 
 # Local environment variables
 .env
+streaming-api/.env
 
 # Python Salesforce Functions
 **/__pycache__/

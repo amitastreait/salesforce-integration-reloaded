@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneDreamIn</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Dark theme styles */
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #b0b0b0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1e88e5;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #1565c0;
+        }
+
+        /* Hero section with background video */
+        .hero {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            text-align: center;
+        }
+
+        /* Fixed header */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2;
+        }
+
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Additional styles for sections */
+        .section {
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .section-content {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            color: #b0b0b0;
+        }
+
+        .section-content p {
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <video autoplay loop muted>
+            <source src="https://player.vimeo.com/external/283988181.hd.mp4?s=93f6b1b4d115ee8dc56d1b68d8e51cfd7284f8cf&profile_id=175" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <nav>
+            <a href="#about">About Us</a>
+            <a href="#services">Our Services</a>
+            <a href="#events">Upcoming Events</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+        <div class="hero-content">
+            <h1>Welcome to OneDreamIn</h1>
+            <p>Your AI-powered event organizer</p>
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">About Us</h2>
+        <div class="section-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+            <p>Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
+        </div>
+    </section>
+
+    <!-- Our Services Section -->
+    <section id="services" class="section">
+        <h2 class="section-title">Our Services</h2>
+        <div class="section-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+            <p>Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section id="events" class="section">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="section-content">
+            <p>No upcoming events currently.</p>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="section">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="section-content">
+            <p>Email: contact@onedreamin.com</p>
+            <p>Phone: +1234567890</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 OneDreamIn. All rights reserved.</p>
+    </footer>
+</body>
+</html>
