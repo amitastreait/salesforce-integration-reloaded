@@ -1736,12 +1736,29 @@ public class MetadataService {
         private String[] apex_schema_type_info = new String[]{SOAP_M_URI,'true','false'};
         private String[] field_order_type_info = new String[]{'field'};
     }
-    public virtual class CustomValue extends Metadata {
+    /*public virtual class CustomValue extends Metadata {
         public String color;
         public Boolean default_x;
         public String description;
         public Boolean isActive;
         public String label;
+    }*/
+    public virtual class CustomValue extends Metadata {
+        public String color;
+        public Boolean default_x;
+        public String fullName;
+        private String[] fullName_type_info = new String[]{'fullName',SOAP_M_URI,null,'0','1','false'};
+        public String description;
+        public Boolean isActive;
+        public String label;
+        
+        private String[] color_type_info = new String[]{'color',SOAP_M_URI,null,'0','1','false'};
+        private String[] default_x_type_info = new String[]{'default',SOAP_M_URI,null,'1','1','false'};
+        private String[] description_type_info = new String[]{'description',SOAP_M_URI,null,'0','1','false'};
+        private String[] isActive_type_info = new String[]{'isActive',SOAP_M_URI,null,'0','1','false'};
+        private String[] label_type_info = new String[]{'label',SOAP_M_URI,null,'0','1','false'};
+        private String[] apex_schema_type_info = new String[]{SOAP_M_URI,'true','false'};
+        private String[] field_order_type_info = new String[]{'fullName','color','default_x','description','isActive','label'};
     }
     public class ListView extends Metadata {
         public String type = 'ListView';
@@ -12938,7 +12955,7 @@ public class MetadataService {
         public String deleteConstraint;
         public Boolean deprecated;
         public String description;
-        public String displayFormat;
+        public String displayFormat; // AutoNumber
         public Boolean displayLocationInDecimal;
         public Boolean encrypted;
         public Boolean escapeMarkup;
@@ -12959,18 +12976,18 @@ public class MetadataService {
         public String maskType;
         public String metadataRelationshipControllingField;
         public Boolean populateExistingRows;
-        public Integer precision;
+        public Integer precision; // Number, Decimal, Currency
         public String referenceTargetField;
-        public String referenceTo;
+        public String referenceTo; // Parent Object API Name
         public String relationshipLabel;
         public String relationshipName;
         public Integer relationshipOrder;
         public Boolean reparentableMasterDetail;
         public Boolean required;
         public Boolean restrictedAdminField;
-        public Integer scale;
+        public Integer scale; // Number, Decimal, Currency
         public String securityClassification;
-        public Integer startingNumber;
+        public Integer startingNumber; // AutoNumber
         public Boolean stripMarkup;
         public String summarizedField;
         public MetadataService.FilterItem[] summaryFilterItems;
@@ -12981,7 +12998,7 @@ public class MetadataService {
         public Boolean trackTrending;
         public String type_x;
         public Boolean unique;
-        public MetadataService.ValueSet valueSet;
+        public MetadataService.ValueSet valueSet; // Picklist values
         public Integer visibleLines;
         public Boolean writeRequiresMasterRead;
         private String[] businessOwnerGroup_type_info = new String[]{'businessOwnerGroup',SOAP_M_URI,null,'0','1','false'};
