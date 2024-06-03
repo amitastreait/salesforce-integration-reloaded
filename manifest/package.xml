@@ -5,6 +5,7 @@
 		<name>AuthProvider</name>
 	</types>
 	<types>
+		<members>Account.External_ID__c</members>
 		<members>Case.Agent__c</members>
 		<members>Case.Zendesk_Ticket_Id__c</members>
 		<members>Product2.QBExternalID__c</members>
@@ -133,6 +134,7 @@
 		<members>Password_Never_Expires</members>
 		<members>Salesforce_Integration_Object</members>
 		<members>UserExternalCredentialsObjectAccess</members>
+		<members>User_External_Credentials_Object_Access_V1</members>
 		<name>PermissionSet</name>
 	</types>
 	<types>
@@ -148,5 +150,10 @@
 		<members>ZoomToken</members>
 		<name>RemoteSiteSetting</name>
 	</types>
-	<version>58.0</version>
+	<types>
+		<members>Contact.Send_Contact_to_SAP</members>
+		<members>Opportunity.Send_Opportunities_to_SAP</members>
+		<name>WorkflowOutboundMessage</name>
+	</types>
+	<version>60.0</version>
 </Package>

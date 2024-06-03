@@ -7,6 +7,7 @@
     <executionUser>integration@pantherschools.com</executionUser>
     <friendlyName>MyGoogle</friendlyName>
     <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <isPkceEnabled>false</isPkceEnabled>
     <providerType>Google</providerType>
     <registrationHandler>GoogleRegAuthHandler</registrationHandler>
     <requireMfa>false</requireMfa>

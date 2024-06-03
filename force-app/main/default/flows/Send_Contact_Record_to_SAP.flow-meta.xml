@@ -1,32 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>Log_a_Call</name>
-        <label>Log a Call</label>
+        <name>Send_Contact_to_SAP</name>
+        <label>Send Contact to SAP</label>
         <locationX>176</locationX>
-        <locationY>170</locationY>
-        <actionName>LogACall</actionName>
-        <actionType>quickAction</actionType>
+        <locationY>323</locationY>
+        <actionName>Contact.Send_Contact_to_SAP</actionName>
+        <actionType>outboundMessage</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>Subject</name>
-            <value>
-                <elementReference>$Record.EventUuid</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>Description</name>
-            <value>
-                <elementReference>$Record.Message</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>LogACall</nameSegment>
+        <nameSegment>Contact.Send_Contact_to_SAP</nameSegment>
         <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>60.0</apiVersion>
     <environments>Default</environments>
-    <interviewLabel>Batch Apex Error Event Subscriber {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Batch Apex Error Event Subscriber</label>
+    <interviewLabel>Send Contact Record to SAP {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Send Contact Record to SAP</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -50,11 +38,11 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Log_a_Call</targetReference>
+            <targetReference>Send_Contact_to_SAP</targetReference>
         </connector>
-        <flowRunAsUser>TriggeringUser</flowRunAsUser>
-        <object>BatchApexErrorEvent</object>
-        <triggerType>PlatformEvent</triggerType>
+        <object>Contact</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
 </Flow>
