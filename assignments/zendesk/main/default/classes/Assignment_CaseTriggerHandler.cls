@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Amit Singh - PantherSchools
+ * @group             : 
+ * @last modified on  : 06-08-2024
+ * @last modified by  : Amit Singh - PantherSchools
+**/
 public with sharing class Assignment_CaseTriggerHandler {
 
     @future(callout = true)
@@ -30,6 +37,8 @@ public with sharing class Assignment_CaseTriggerHandler {
             }
         }else{
             System.debug(' Error Occured While Creating Records '+ httpRes?.getBody() );
+            newRecord.ZendeskErrorMessage__c = httpRes?.getBody();
+            update newRecord;
         }
     }
 

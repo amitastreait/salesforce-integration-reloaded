@@ -8,6 +8,7 @@
 		<members>Account.External_ID__c</members>
 		<members>Case.Agent__c</members>
 		<members>Case.Zendesk_Ticket_Id__c</members>
+		<members>Case.ZendeskErrorMessage__c</members>
 		<members>Product2.QBExternalID__c</members>
 		<members>Product2.Sync_With_QuickBooks__c</members>
 		<members>Product2.Synced_With_Quickbooks__c</members>

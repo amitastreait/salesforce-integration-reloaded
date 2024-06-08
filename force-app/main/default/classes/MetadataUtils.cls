@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Amit Singh - PantherSchools
  * @group             : 
- * @last modified on  : 05-26-2024
+ * @last modified on  : 06-08-2024
  * @last modified by  : Amit Singh - PantherSchools
 **/
 public with sharing class MetadataUtils {
@@ -22,7 +22,7 @@ public with sharing class MetadataUtils {
     public static MetadataService.MetadataPort createService() {
         MetadataService.MetadataPort service = new MetadataService.MetadataPort();
         service.SessionHeader = new MetadataService.SessionHeader_element();
-        service.SessionHeader.sessionId = getSessionId();
+        service.SessionHeader.sessionId = Test.isRunningTest() == True ? UserInfo.getSessionId() : getSessionId();
         return service;
     }
 
@@ -92,14 +92,14 @@ public with sharing class MetadataUtils {
     }
 
     // MetadataUtils.createFields();
-    public static void createFields(){
+    public static void createFields(String objectApiName, String fielLabel){
 
         MetadataService.MetadataPort service     = createService();
 
         MetadataService.CustomField customField = new MetadataService.CustomField();
-        // ObjectApiName.FieldApiName
-        customField.fullName         = 'StripeInvoice__c.StripeUUID__c'; // Account - Active => Account.Active__c
-        customField.label            = 'Stripe UUID';
+        // ObjectApiName.FieldApiName // Stripe UUID - StripeUUID
+        customField.fullName         = objectApiName+'.'+fielLabel.deleteWhitespace()+'__c'; // Account - Active => Account.Active__c
+        customField.label            = fielLabel;
         customField.type_x           = 'Text';
         customField.description      = 'This is the field created from Salesforce Metadata API';
         customField.inlineHelpText   = 'This is the field created from Salesforce Metadata API';

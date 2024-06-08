@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Amit Singh - PantherSchools
  * @group             : PantherSchools
- * @last modified on  : 04-06-2024
+ * @last modified on  : 06-08-2024
  * @last modified by  : Amit Singh - PantherSchools
 **/
 
@@ -91,13 +91,13 @@ global with sharing class PS_AccountManager {
         System.debug(System.JSON.serializePretty(req));
         
         /** get the request body */
-        String requeBody = req.requestBody?.toString(); // Convert Blob into String format
-        System.debug( requeBody ); // JSON Format
+        String requestBody = req.requestBody?.toString(); // Convert Blob into String format
+        System.debug( requestBody ); // JSON Format
 
         RestResponse res = RestContext.response;
         System.debug(System.JSON.serializePretty(res));
 
-        if(String.isBlank(requeBody)){
+        if(String.isBlank(requestBody)){
             res.statusCode = 400;
             res.responseBody = Blob.valueOf('{"message": "Request Body can not be blank!"}');
             //return res;
