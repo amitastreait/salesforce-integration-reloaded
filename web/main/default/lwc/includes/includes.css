@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.course-includes {
+    background-color: white;
+    /* border: 1px solid #ddd;
+    border-radius: 8px; */
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+}
+
+.course-includes h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+li .icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.icon.video::before {
+    content: "\1F4FA"; /* TV emoji */
+}
+
+.icon.code::before {
+    content: "\1F4BB"; /* Laptop emoji */
+}
+
+.icon.article::before {
+    content: "\1F4D6"; /* Open book emoji */
+}
+
+.icon.download::before {
+    content: "\1F4BE"; /* Floppy disk emoji */
+}
+
+.icon.mobile::before {
+    content: "\1F4F1"; /* Mobile phone emoji */
+}
+
+.icon.infinity::before {
+    content: "\267E"; /* Infinity symbol emoji */
+}
+
+.icon.certificate::before {
+    content: "\1F3C6"; /* Trophy emoji */
+}
+
+.left {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.right {
+    flex: 1;
+}

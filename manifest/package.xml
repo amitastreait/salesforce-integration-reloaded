@@ -7,8 +7,8 @@
 	<types>
 		<members>Account.External_ID__c</members>
 		<members>Case.Agent__c</members>
-		<members>Case.Zendesk_Ticket_Id__c</members>
 		<members>Case.ZendeskErrorMessage__c</members>
+		<members>Case.Zendesk_Ticket_Id__c</members>
 		<members>Product2.QBExternalID__c</members>
 		<members>Product2.Sync_With_QuickBooks__c</members>
 		<members>Product2.Synced_With_Quickbooks__c</members>
@@ -86,6 +86,15 @@
 		<members>OpenCageCredentials</members>
 		<members>SomeAPI</members>
 		<name>ExternalCredential</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>ExternalDataSource</name>
+	</types>
+	<types>
+		<members>Course_Record_Page</members>
+		<members>Scheduled_Course_Record_Page</members>
+		<name>FlexiPage</name>
 	</types>
 	<types>
 		<members>*</members>

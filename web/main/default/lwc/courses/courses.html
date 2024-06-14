@@ -1,0 +1,12 @@
+<template>
+    <div class="slds-p-around_large">
+        <lightning-spinner alternative-text="Loading" size="medium" variant="brand" lwc:if={isLoading} ></lightning-spinner>
+        <lightning-layout multiple-rows>
+            <template if:true={records} for:each={records} for:item="course" for:index="index">
+                <lightning-layout-item size="12" key={course.Id} small-device-size="12" medium-device-size="6" large-device-size="4" padding="around-small" >
+                    <c-course-tile course={course}></c-course-tile>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+    </div>
+</template>

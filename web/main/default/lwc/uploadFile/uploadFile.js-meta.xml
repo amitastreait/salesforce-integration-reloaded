@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Upload File</masterLabel>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="recordId" type="String" label="The Record Id" description="Provide the record Id"/>
+            <property name="fieldApiName" type="String" label="Field API Name to Store the public Url" 
+                description="Field API Name to Store the public Url"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

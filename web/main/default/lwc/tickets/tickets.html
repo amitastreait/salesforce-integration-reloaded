@@ -1,0 +1,62 @@
+<template>
+    <div class="container">
+        <div class="info">
+            <h1>Book tickets for <span class="highlight">Mule Dreamin</span></h1>
+            <p>Fuel your knowledge, synergy, and social impact in the MuleSoft & Salesforce realm</p>
+            <h2>About Mule Dreamin</h2>
+            <p>Mule Dreamin strives to cultivate a culture of learning, collaboration, and community involvement within the MuleSoft and Salesforce ecosystem. It empowers attendees to deepen their comprehension of MuleSoft and Salesforce technologies, exchange innovative ideas, and forge connections with like-minded professionals.</p>
+            <h3>Terms & Conditions</h3>
+            <p>Once bought, no monetary refunds will be given. You can only transfer the ticket to another person. You must inform the recipient of details to the organizing team by writing an email to the organizing team.</p>
+        </div>
+        <div class="registration">
+            <h2>Registration</h2>
+            <p>Breakfast, Keynote, Panel Discussion, Insightful sessions on different tracks, Lunch, Networking & many more.</p>
+            <div class="price-quantity">
+                <p class="price">Rs. {totalPrice}</p>
+                <div class="quantity">
+                    <button class="quantity-btn" onclick={decreaseQuantity}>−</button>
+                    <span>{quantity}</span>
+                    <button class="quantity-btn" onclick={increaseQuantity}>+</button>
+                </div>
+            </div>
+        </div>
+        <template if:true={registrationForms} for:each={registrationForms} for:item="item" for:index="index">
+            <div key={item.id} class="registration-form">
+                <div >
+                    <h2>Registration ({item.id}/{quantity})</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <lightning-input data-index={index} onchange={handleInputChange} type="text" variant="label-stacked" name="Name" label="Name" required></lightning-input>
+                        </div>
+                        <div class="form-group">
+                            <lightning-input data-index={index} onchange={handleInputChange} type="email" variant="label-stacked" name="Email" label="Email" required></lightning-input>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <lightning-input data-index={index} onchange={handleInputChange} type="text" variant="label-stacked" name="Phone" label="Mobile" required></lightning-input>
+                        </div>
+                        <div class="form-group">
+                            <lightning-input data-index={index} onchange={handleInputChange} type="text" variant="label-stacked" name="Organization" label="Organization"></lightning-input>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <lightning-combobox
+                                name="Size"
+                                data-index={index}
+                                label="T-shirt Size"
+                                placeholder="Select T-shirt Size"
+                                options={options}
+                                onchange={handleInputChange}
+                                required
+                            >
+                            </lightning-combobox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <button onclick={handleSubmit} type="submit" class="submit-btn">Buy Passe(s)</button>
+    </div>
+</template>

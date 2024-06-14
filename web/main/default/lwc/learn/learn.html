@@ -1,0 +1,17 @@
+<template>
+    <div class="what-you-learn">
+        <h2>What you'll learn</h2>
+        <div class="content">
+            <ul class="left">
+                <p class="slds-p-around--small" lwc:if={course.Course__c}>
+                    <lightning-formatted-rich-text value={course.Course__r.What_you_will_learn__c}></lightning-formatted-rich-text>
+                </p>
+            </ul>
+            <ul class="right">
+                <p class="slds-p-around--small" lwc:if={course.Course__c}>
+                    <lightning-formatted-rich-text value={course.Course__r.LearnRightSection__c}></lightning-formatted-rich-text>
+                </p>
+            </ul>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,65 @@
+<template>
+    <div class="course-card">
+        <img src={course.Thumbnail__c} onclick={handleClick} alt="Course Image" style="cursor: pointer;" class="course-image">
+        <div class="course-content">
+            <h2 class="heading" onclick={handleClick} style="cursor: pointer;" >{course.Name}</h2>
+            <p class="instructor" onclick={handleAuthorClick} style="cursor: pointer;" >Amit Singh</p>
+            <div class="rating">
+                <span>4.7</span>
+                <span class="stars">★★★★★</span>
+                <!-- <span>(382,994)</span> -->
+            </div>
+            <p class="price">
+                <lightning-formatted-number value={course.Course__r.Course_Cost__c} format-style="currency" currency-code="USD"></lightning-formatted-number>
+            </p>
+            <div class="bestseller">Learn from the Best</div>
+        </div>
+    </div>
+    <!-- <div class="main-container slds-p-around--small">
+        <div class="img-container">
+            <img onclick={handleClick} src={course.Thumbnail__c} alt={course.Name} />
+        </div>
+    </div>
+    <div class="container slds-p-around--small">
+        <p class="paddings title slds-text-heading_medium">
+            {course.Name}
+        </p>
+        <p class="trainer paddings">
+            Amit Singh
+        </p>
+        <p class="cost paddings">
+            <lightning-formatted-number value={course.Course__r.Course_Cost__c} format-style="currency" currency-code="USD"></lightning-formatted-number>
+        </p>
+        <p class="category paddings">
+            {course.Course__r.Category__c}
+        </p>
+    </div> -->
+    <!-- <div>
+        <div class="slds-file slds-file_card slds-has-title">
+            <figure>
+                <a href="JavaScript:void(0);" onclick={handleClick} class="slds-file__crop">
+                    <span class="slds-assistive-text">Preview:</span>
+                    <span class="slds-file__icon slds-icon_container" title={course.Name}>
+                        <img src={course.Thumbnail__c} alt={course.Name} />
+                        <span class="slds-assistive-text">{course.Name}</span>
+                    </span>
+                </a>
+                <figcaption class="slds-file__title slds-file__title_card">
+                    <div class="slds-media slds-media_small slds-media_center">
+                        <div class="slds-media__figure slds-line-height_reset">
+                            <span class="slds-icon_container" title={course.Name}>
+                                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                                    <use xlink:href="/apexpages/slds/latest/assets/doctype-sprite/svg/symbols.svg#image"></use>
+                                </svg>
+                                <span class="slds-assistive-text">{course.Name}</span>
+                            </span>
+                        </div>
+                        <div class="slds-media__body">
+                            <span class="slds-file__text slds-truncate" title={course.Name}>{course.Name}</span>
+                        </div>
+                    </div>
+                </figcaption>
+            </figure>
+        </div>
+    </div> -->
+</template>

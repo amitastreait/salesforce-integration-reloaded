@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalDataSource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customConfiguration>{&quot;environment&quot;:&quot;PROD&quot;,&quot;apiVersion&quot;:&quot;60.0&quot;,&quot;timeout&quot;:&quot;120&quot;,&quot;searchEnabled&quot;:&quot;true&quot;}</customConfiguration>
+    <endpoint>https://login.salesforce.com</endpoint>
+    <isWritable>true</isWritable>
+    <label>PantherSchools Org</label>
+    <principalType>PerUser</principalType>
+    <protocol>Password</protocol>
+    <type>SfdcOrg</type>
+    <username>yourusername@gmail.com</username>
+</ExternalDataSource>

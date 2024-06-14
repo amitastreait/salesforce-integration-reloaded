@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.slider-container {
+    position: relative;
+    /* max-width: 1000px; */
+    width: 100%;
+    height: 400px; /* Fixed height for the slider */
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%; /* Ensure the image fits within the container */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
+
+.caption {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.caption h2 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+}
+
+.caption p {
+    font-size: 16px;
+    margin: 0 0 20px 0;
+}
+
+.caption button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .slider-container {
+        height: 300px;
+    }
+
+    .caption {
+        padding: 15px;
+    }
+
+    .caption h2 {
+        font-size: 20px;
+    }
+
+    .caption p {
+        font-size: 14px;
+    }
+
+    .caption button {
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider-container {
+        height: 200px;
+    }
+
+    .caption {
+        padding: 10px;
+    }
+
+    .caption h2 {
+        font-size: 16px;
+    }
+
+    .caption p {
+        font-size: 12px;
+    }
+
+    .caption button {
+        padding: 5px 10px;
+    }
+
+    .prev, .next {
+        padding: 5px;
+    }
+}

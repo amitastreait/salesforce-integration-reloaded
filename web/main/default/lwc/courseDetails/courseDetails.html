@@ -1,0 +1,73 @@
+<template>
+    <lightning-spinner alternative-text="Loading" size="small" variant="brand" lwc:if={isLoading} ></lightning-spinner>
+    <header>
+        <nav>
+            <a href="JavaScript:void(0);">Salesforce</a> > 
+            <a lwc:if={course.Course__c} href="JavaScript:void(0);"> {course.Course__r.Category__c}</a>
+        </nav>
+    </header>
+    <c-slider></c-slider>
+    <main>
+        <section class="course-details">
+            <h1 class="slds-text-heading_medium slds-p-around--small">{course.Name}</h1>
+            <p class="slds-p-around--small" lwc:if={course.Course__c}>
+                <lightning-formatted-rich-text value={course.Course__r.Subheading__c}></lightning-formatted-rich-text>
+            </p>
+            <p class="bestseller slds-p-around--small"><span>Learn from the best </span><span>76K+ students trained</span></p>
+            <p class="slds-p-around--small">Instructor <span>Amit Singh</span></p>
+            <p class="slds-p-around--small">Last updated 03/2024 <span>English</span></p>
+        </section>
+        <section class="course-preview">
+            <img src={course.Thumbnail__c} alt="Course Preview">
+            <div class="price-section">
+                <p class="price" lwc:if={course.Course__c}>
+                    <lightning-formatted-number value={course.Course__r.Course_Cost__c} format-style="currency" currency-code="USD">
+                    </lightning-formatted-number> <span> $300</span> 40% off</p>
+                <p style="color: black;">5 hours left at this price!</p>
+                <button onclick={handleRegister} >Register Here</button>
+                <p style="color: black;" class="slds-p-around--small">Full Lifetime Access</p>
+                <!-- <input type="text" placeholder="Enter Coupon">
+                <button>Apply</button> -->
+            </div>
+        </section>
+        <section>
+            <c-learn course={course} ></c-learn>
+            <!-- <h2 class="slds-text-heading_medium slds-p-around--small">What you'll learn</h2> -->
+            <!-- <p class="slds-p-around--small" lwc:if={course.Course__c}>
+                <lightning-formatted-rich-text value={course.Course__r.What_you_will_learn__c}></lightning-formatted-rich-text>
+            </p> -->
+        </section>
+        <section>
+            <c-includes hours="61" course={course}></c-includes>
+            <!-- <h2 class="slds-text-heading_medium slds-p-around--small">This course includes:</h2> -->
+            <!-- <p class="slds-p-around--small" lwc:if={course.Course__c}>
+                <lightning-formatted-rich-text value={course.Course__r.Materials_Included__c}></lightning-formatted-rich-text>
+            </p> -->
+        </section>
+        
+        <section>
+            <h2 class="slds-text-heading_medium slds-p-around--small">Requirements</h2>
+            <p class="slds-p-around--small" lwc:if={course.Course__c}>
+                <lightning-formatted-rich-text value={course.Course__r.Requirements__c}></lightning-formatted-rich-text>
+            </p>
+        </section>
+        <section>
+            <h2 class="slds-text-heading_medium slds-p-around--small">Why You Should Attend the Course:</h2>
+            <p class="slds-p-around--small" lwc:if={course.Course__c}>
+                <lightning-formatted-rich-text value={course.Course__r.Why_You_Should_Attend_the_Course__c}></lightning-formatted-rich-text>
+            </p>
+        </section>
+        <section>
+            <h2 class="slds-text-heading_medium slds-p-around--small">Description</h2>
+            <p class="slds-p-around--small" lwc:if={course.Course__c}>
+                <lightning-formatted-rich-text value={course.Course__r.CourseDescription__c}></lightning-formatted-rich-text>
+            </p>
+        </section>
+        <section>
+            <h2 class="slds-text-heading_medium slds-p-around--small">Who this course is for:</h2>
+            <p class="slds-p-around--small" lwc:if={course.Course__c}>
+                <lightning-formatted-rich-text value={course.Course__r.WhoisthisCourseFor__c}></lightning-formatted-rich-text>
+            </p>
+        </section>
+    </main>
+</template>

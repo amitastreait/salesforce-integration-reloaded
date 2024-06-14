@@ -1,0 +1,24 @@
+<template>
+    <div class="course-includes">
+        <h2>This course includes:</h2>
+        <div class="content">
+            <ul class="left">
+                <p class="slds-p-around--small" lwc:if={course.Course__c}>
+                    <lightning-formatted-rich-text value={course.Course__r.Materials_Included__c}></lightning-formatted-rich-text>
+                </p>
+                <!-- <li><span class="icon video"></span> {hours} hours on-demand video</li>
+                <li><span class="icon code"></span> coding exercises</li>
+                <li><span class="icon mobile"></span> Access on mobile and TV</li>
+                <li><span class="icon article"></span> 65 articles</li>
+                <li><span class="icon download"></span> 194 downloadable resources</li> -->
+            </ul>
+            <ul class="right">
+                <p class="slds-p-around--small" lwc:if={course.Course__c}>
+                    <lightning-formatted-rich-text value={course.Course__r.IncludedRightSection__c}></lightning-formatted-rich-text>
+                </p>
+                <!-- <li><span class="icon infinity"></span> Full lifetime access</li>
+                <li><span class="icon certificate"></span> Certificate of completion</li> -->
+            </ul>
+        </div>
+    </div>
+</template>
