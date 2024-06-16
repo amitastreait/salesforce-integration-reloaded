@@ -1,7 +1,18 @@
 <template>
     <div class="slider-container">
         <div class="slider">
-            <div class="slide active">
+            <template if:true={slides} for:each={slides} for:item="slide" for:index="index">
+                <div key={slide.Id} class="slide active">
+                    <img src={slide.PublicUrl__c} alt="Slide Image">
+                    <div class="caption">
+                        <h2>{slide.Heading__c}</h2>
+                        <p>{slide.Subheading__c}</p>
+                        <button data-target-url={slide.ButtonUrl__c} onclick={handleClick}>{slide.ButtonText__c}</button>
+                        <!-- <button>Plan for organizations</button> -->
+                    </div>
+                </div>
+            </template>
+            <div if:false={slides} class="slide active">
                 <img src="https://course-pantherschools-dev-ed.develop.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Jpg&oid=00DHu000003NXeO&versionId=068Hu00000c9PUj&d=%2Fa%2FHu000000oQxi%2FaUqP9uF0xNnJnpb4BGMn21sSlh.uO2.qi1z0OIP2Ccw&asPdf=false" alt="Slide Image">
                 <div class="caption">
                     <h2>Skills that drive you forward</h2>
@@ -10,7 +21,7 @@
                     <!-- <button>Plan for organizations</button> -->
                 </div>
             </div>
-            <div class="slide">
+            <div if:false={slides} class="slide">
                 <img src="https://course-pantherschools-dev-ed.develop.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Jpg&oid=00DHu000003NXeO&versionId=068Hu00000c9PUj&d=%2Fa%2FHu000000oQxi%2FaUqP9uF0xNnJnpb4BGMn21sSlh.uO2.qi1z0OIP2Ccw&asPdf=false" alt="Slide Image">
                 <div class="caption">
                     <h2>Learning that gets you</h2>

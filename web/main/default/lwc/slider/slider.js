@@ -1,8 +1,10 @@
-import { LightningElement } from 'lwc';
-
-export default class SliderComponent extends LightningElement {
+import { LightningElement, api } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
+export default class SliderComponent extends NavigationMixin(LightningElement) {
     currentIndex = 0;
     slideInterval;
+
+    @api slides;
 
     renderedCallback() {
         this.showSlide(this.currentIndex);
@@ -37,5 +39,16 @@ export default class SliderComponent extends LightningElement {
         this.currentIndex = (this.currentIndex < this.template.querySelectorAll('.slide').length - 1) ? this.currentIndex + 1 : 0;
         this.showSlide(this.currentIndex);
         this.startAutoSlide();
+    }
+
+    handleClick(event){
+        event.preventDefault();
+        let url = event.currentTarget.dataset.targetUrl;
+        this[NavigationMixin.Navigate]({
+            type: "standard__webPage",
+            attributes: {
+               url: url
+            }
+        });
     }
 }

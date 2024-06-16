@@ -1,10 +1,11 @@
 import { LightningElement, track } from 'lwc';
-
+import process from '@salesforce/apex/RSVPService.process';
 export default class BookTickets extends LightningElement {
     quantity = 1;
     totalPrice = 999;
     pricePerTicket = 999;
     @track registrationForms = [ { id : 1, Name: '', Email: '', Phone: '', Organization: '', Size: ''} ];
+    isLoading = false;
 
     get options(){
         return [
@@ -20,7 +21,7 @@ export default class BookTickets extends LightningElement {
         if (this.quantity > 1) {
             this.quantity -= 1;
             this.updateTotalPrice();
-            this.updateRegistrationForms();
+            this.updateDecreaseRegistrationForms();
         }
     }
 
@@ -34,8 +35,12 @@ export default class BookTickets extends LightningElement {
         this.totalPrice = this.quantity * this.pricePerTicket;
     }
 
+    updateDecreaseRegistrationForms() {
+        this.registrationForms.splice(this.registrationForms.length-1, 1);
+    }
+
     updateRegistrationForms() {
-        this.registrationForms = Array.from({ length: this.quantity }, (v, i) => ({ id : i+1, Name: '', Email: '', Phone: '', Organization: '', Size: ''}));
+        this.registrationForms.splice(this.registrationForms.length, 0, { id : this.registrationForms.length+1, Name: '', Email: '', Phone: '', Organization: '', Size: ''})
     }
 
     handleSubmit(event) {
@@ -49,7 +54,18 @@ export default class BookTickets extends LightningElement {
         console.log( JSON.stringify(this.registrationForms) );
         if (allValid) {
             // Handle form submission
+            this.isLoading = true;
             console.log('Form Submitted');
+            process({ records: JSON.stringify(this.registrationForms) })
+              .then(result => {
+                console.log('Result \n ', result);
+              })
+              .catch(error => {
+                console.error('Error: \n ', error);
+            })
+            .finally(()=>{
+                this.isLoading = false;
+            })
         }
     }
 
