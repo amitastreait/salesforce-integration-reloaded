@@ -17,6 +17,7 @@
 	<types>
 		<members>AssetAccountRefName</members>
 		<members>AssetAccountRefValue</members>
+		<members>CallbackAPIEndpoint</members>
 		<members>ExpenseAccountRefName</members>
 		<members>ExpenseAccountRefValue</members>
 		<members>IncomeAccountRefName</members>
@@ -40,6 +41,7 @@
 		<members>Agent__c</members>
 		<members>Booking__c</members>
 		<members>Country__mdt</members>
+		<members>CourseBooking__c</members>
 		<members>CourseImage__c</members>
 		<members>CourseRating__c</members>
 		<members>Course__c</members>
@@ -53,10 +55,13 @@
 		<members>LinkedIn_Post_Comment__c</members>
 		<members>LinkedIn_Post__c</members>
 		<members>LogoutEvent__c</members>
+		<members>Media__c</members>
 		<members>MetadataDeploymentResult__e</members>
 		<members>OrderStatus__e</members>
 		<members>PKCEHelper__c</members>
 		<members>PS_SalesforceConfig__c</members>
+		<members>RazorpayConfig__mdt</members>
+		<members>RazorpayPaymentLink__c</members>
 		<members>SAP_Account__e</members>
 		<members>ScheduledCourse__c</members>
 		<members>Spotify__mdt</members>
@@ -84,6 +89,7 @@
 		<members>Google</members>
 		<members>MyZoom</members>
 		<members>OpenCageCredentials</members>
+		<members>RazorPayExternalCredentials</members>
 		<members>SomeAPI</members>
 		<name>ExternalCredential</name>
 	</types>
@@ -93,6 +99,7 @@
 	</types>
 	<types>
 		<members>Course_Record_Page</members>
+		<members>Media_Record_Page</members>
 		<members>Scheduled_Course_Record_Page</members>
 		<name>FlexiPage</name>
 	</types>
@@ -103,6 +110,7 @@
 	<types>
 		<members>Agent__c-Agent Layout</members>
 		<members>Booking__c-Booking Layout</members>
+		<members>CourseBooking__c-Booking Layout</members>
 		<members>CourseImage__c-Course Image Layout</members>
 		<members>CourseRating__c-Course Rating Layout</members>
 		<members>Course__c-Course Layout</members>
@@ -115,8 +123,11 @@
 		<members>LinkedIn_Config__mdt-LinkedIn Config Layout</members>
 		<members>LinkedIn_Post__c-LinkedIn Post Layout</members>
 		<members>LogoutEvent__c-LogoutEvent Layout</members>
+		<members>Media__c-Media Layout</members>
 		<members>PKCEHelper__c-PKCE Helper Layout</members>
 		<members>PS_SalesforceConfig__c-Salesforce Config Layout</members>
+		<members>RazorpayConfig__mdt-Razorpay Config Layout</members>
+		<members>RazorpayPaymentLink__c-Razorpay Payment Link Layout</members>
 		<members>ScheduledCourse__c-Scheduled Course Layout</members>
 		<members>Spotify__mdt-Spotify Layout</members>
 		<members>TestMetadata__mdt-Test Metadata Layout</members>
@@ -141,6 +152,7 @@
 		<name>NamedCredential</name>
 	</types>
 	<types>
+		<members>BookingPermissionSet</members>
 		<members>Password_Never_Expires</members>
 		<members>Salesforce_Integration_Object</members>
 		<members>UserExternalCredentialsObjectAccess</members>

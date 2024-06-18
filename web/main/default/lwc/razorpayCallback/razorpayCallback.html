@@ -1,0 +1,32 @@
+<template>
+    <lightning-spinner alternative-text="Loading" size="small" variant="brand" lwc:if={isLoading}></lightning-spinner>
+    <div class="container">
+
+        <div if:false={success} class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+            <span class="slds-assistive-text">error</span>
+            <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+                title="Description of icon when needed">
+                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                    <use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                </svg>
+            </span>
+            <h2>
+                {errorMessage}
+            </h2>
+        </div>
+
+        <div class="info">
+            <h1>Book tickets for <span class="highlight">Mule Dreamin</span></h1>
+            <p>Fuel your knowledge, synergy, and social impact in the MuleSoft & Salesforce realm</p>
+            <h2>About Mule Dreamin</h2>
+            <p>Mule Dreamin strives to cultivate a culture of learning, collaboration, and community involvement within
+                the MuleSoft and Salesforce ecosystem. It empowers attendees to deepen their comprehension of MuleSoft
+                and Salesforce technologies, exchange innovative ideas, and forge connections with like-minded
+                professionals.</p>
+            <h3>Terms & Conditions</h3>
+            <p>Once bought, no monetary refunds will be given. You can only transfer the ticket to another person. You
+                must inform the recipient of details to the organizing team by writing an email to the organizing team.
+            </p>
+        </div>
+    </div>
+</template>

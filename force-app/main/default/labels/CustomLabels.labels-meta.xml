@@ -17,6 +17,13 @@
         <value>81</value>
     </labels>
     <labels>
+        <fullName>CallbackAPIEndpoint</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>CallbackAPIEndpoint</shortDescription>
+        <value>razorpay-callback</value>
+    </labels>
+    <labels>
         <fullName>ExpenseAccountRefName</fullName>
         <categories>ExpenseAccountRef</categories>
         <language>en_US</language>

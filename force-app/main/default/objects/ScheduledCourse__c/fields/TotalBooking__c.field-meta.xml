@@ -4,11 +4,11 @@
     <externalId>false</externalId>
     <label>Total Booking</label>
     <summaryFilterItems>
-        <field>Booking__c.Status__c</field>
+        <field>CourseBooking__c.Status__c</field>
         <operation>equals</operation>
         <value>Deposit Paid, Invoiced, Fully Paid</value>
     </summaryFilterItems>
-    <summaryForeignKey>Booking__c.Scheduled_Course__c</summaryForeignKey>
+    <summaryForeignKey>CourseBooking__c.Scheduled_Course__c</summaryForeignKey>
     <summaryOperation>count</summaryOperation>
     <trackTrending>false</trackTrending>
     <type>Summary</type>

@@ -1,0 +1,57 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/mxparser-1.2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/txw2-4.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jakarta.ws.rs-api-3.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jersey-container-jetty11-http-3.1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jersey-hk2-3.1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/hk2-api-3.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/apex-jorje-lsp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jetty-util-11.0.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/xmlpull-1.1.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jersey-common-3.1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/hk2-utils-3.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jakarta.xml.bind-api-4.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jetty-servlet-11.0.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jetty-jakarta-servlet-api-5.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jakarta.validation-api-3.0.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jakarta.annotation-api-2.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/xstream-1.4.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jersey-server-3.1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jetty-servlets-11.0.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jersey-client-3.1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/commons-cli-1.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jakarta.activation-api-2.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/aopalliance-repackaged-3.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jackson-core-2.15.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jackson-databind-2.15.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jaxb-api-2.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jersey-container-servlet-core-3.1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jetty-http-11.0.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jaxb-runtime-4.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/parser-1.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jersey-entity-filtering-3.1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/istack-commons-runtime-4.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/javassist-3.29.2-GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/angus-activation-2.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jetty-io-11.0.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/commons-io-2.15.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/javax.activation-api-1.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jetty-server-11.0.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/osgi-resource-locator-1.0.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jackson-module-jakarta-xmlbind-annotations-2.15.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/slf4j-simple-2.0.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jakarta.inject-api-2.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jackson-annotations-2.15.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/slf4j-api-2.0.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jersey-media-json-jackson-3.1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/hk2-locator-3.0.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jetty-security-11.0.20.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/server-1.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/node_modules/prettier-plugin-apex/vendor/apex-ast-serializer/lib/jaxb-core-4.0.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

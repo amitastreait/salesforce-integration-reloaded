@@ -112,7 +112,7 @@
         <fields>Amount_Paid__c</fields>
         <fields>Status__c</fields>
         <fields>Trainer__c</fields>
-        <relatedList>Booking__c.Scheduled_Course__c</relatedList>
+        <relatedList>CourseBooking__c.Scheduled_Course__c</relatedList>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedFileList</relatedList>

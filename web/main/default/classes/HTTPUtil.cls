@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Amit Singh - PantherSchools
  * @group             : 
- * @last modified on  : 06-14-2024
+ * @last modified on  : 06-17-2024
  * @last modified by  : Amit Singh - PantherSchools
 **/
 public without sharing class HTTPUtil {
@@ -20,7 +20,7 @@ public without sharing class HTTPUtil {
         request.setEndpoint(endpoint);
         request.setMethod(method);
         request.setHeader('Content-Type', contentType);
-        if(String.isBlank(requestBody)){
+        if(!String.isBlank(requestBody)){
             request.setBody(requestBody);
         }
 
@@ -34,7 +34,6 @@ public without sharing class HTTPUtil {
             HTTPResponse response = http.send(request);
             return response;
         } catch (System.Exception ex) {
-            // Handle callout exceptions
             System.debug('Callout error: ' + ex);
             return null;
         }

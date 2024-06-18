@@ -1,11 +1,24 @@
 import { LightningElement, track } from 'lwc';
-import process from '@salesforce/apex/RSVPService.process';
-export default class BookTickets extends LightningElement {
+import process from '@salesforce/apex/RazorpayPaymentLinkService.process';
+import basePath from "@salesforce/community/basePath";
+import CallbackAPIEndpoint from '@salesforce/label/c.CallbackAPIEndpoint';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { NavigationMixin } from 'lightning/navigation';
+
+export default class BookTickets extends NavigationMixin(LightningElement) {
     quantity = 1;
     totalPrice = 999;
     pricePerTicket = 999;
     @track registrationForms = [ { id : 1, Name: '', Email: '', Phone: '', Organization: '', Size: ''} ];
     isLoading = false;
+
+    customerInfo = {}
+
+    callbackUrl;
+    connectedCallback(){
+        this.callbackUrl = this.baseUrl()+basePath+'/'+CallbackAPIEndpoint;
+        console.log(this.callbackUrl);
+    }
 
     get options(){
         return [
@@ -45,23 +58,60 @@ export default class BookTickets extends LightningElement {
 
     handleSubmit(event) {
         event.preventDefault();
-        const allValid = [
-            ...this.template.querySelectorAll('lightning-input, lightning-combobox'),
-        ].reduce((validSoFar, inputCmp) => {
+        const allValid = [...this.template.querySelectorAll('lightning-input, lightning-combobox'),].reduce((validSoFar, inputCmp) => {
             inputCmp.reportValidity();
             return validSoFar && inputCmp.checkValidity();
         }, true);
-        console.log( JSON.stringify(this.registrationForms) );
+        
         if (allValid) {
-            // Handle form submission
             this.isLoading = true;
-            console.log('Form Submitted');
-            process({ records: JSON.stringify(this.registrationForms) })
+            this.customerInfo.callback_url = this.callbackUrl;
+            this.customerInfo.amount = this.totalPrice;
+            
+            process({
+                customerInfo : this.customerInfo,
+                bookingInfo  : JSON.stringify(this.registrationForms) 
+            })
               .then(result => {
-                console.log('Result \n ', result);
-              })
-              .catch(error => {
-                console.error('Error: \n ', error);
+                const event = new ShowToastEvent({
+                    title: 'Success!',
+                    message: 'We are redirecting you to {0} ! Please wait, if it get stuck, click {1} to redirect!',
+                    mode : 'sticky',
+                    variant: 'success',
+                    messageData: [
+                        'Payment Page', {
+                            url: result,
+                            label: 'Here',
+                        },
+                    ],
+                });
+                this.dispatchEvent(event);
+                window.location.href = result;
+                /* this[NavigationMixin.Navigate]({
+                    type: "standard__webPage",
+                    attributes: {
+                       url: result
+                    }
+                },
+                true
+              ); */
+            })
+            .catch(error => {
+                console.error(JSON.stringify(error));
+                const event = new ShowToastEvent({
+                    title: 'Error!',
+                    message: 'Error While Creating {0} ! Please try again, if you get the same error please {1} us!',
+                    mode : 'sticky',
+                    variant: 'error',
+                    messageData: [
+                        'Booking',
+                        {
+                            url: 'mailto:contact@muledreamin.com',
+                            label: 'Contact',
+                        },
+                    ],
+                });
+                this.dispatchEvent(event);
             })
             .finally(()=>{
                 this.isLoading = false;
@@ -75,5 +125,19 @@ export default class BookTickets extends LightningElement {
         let name = event.currentTarget.name;
         let value = event.currentTarget.value;
         this.registrationForms[index][name] = value;
+    }
+
+    handleInfoChange(event){
+        event.preventDefault();
+        let name = event.currentTarget.name;
+        let value = event.currentTarget.value;
+        this.customerInfo[name] = value;
+    }
+
+    baseUrl(){
+        const path = 'course';
+        const before_ = `${path}`.substring(0, `${path}`.indexOf('/s')+1);
+        const communityUrl = `https://${location.host}${before_}`;
+        return communityUrl;
     }
 }

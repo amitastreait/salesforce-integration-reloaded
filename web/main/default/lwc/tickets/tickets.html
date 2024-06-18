@@ -1,4 +1,5 @@
 <template>
+    <lightning-spinner alternative-text="Loading" size="small" lwc:if={isLoading} variant="brand" ></lightning-spinner>
     <div class="container">
         <div class="info">
             <h1>Book tickets for <span class="highlight">Mule Dreamin</span></h1>
@@ -17,6 +18,22 @@
                     <button class="quantity-btn" onclick={decreaseQuantity}>−</button>
                     <span>{quantity}</span>
                     <button class="quantity-btn" onclick={increaseQuantity}>+</button>
+                </div>
+            </div>
+        </div>
+        <div class="registration">
+            <h2>Your Information</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <lightning-input onchange={handleInfoChange} type="text" variant="label-stacked" name="Name" label="Name" required></lightning-input>
+                </div>
+                <div class="form-group">
+                    <lightning-input onchange={handleInfoChange} type="email" variant="label-stacked" name="Email" label="Email" required></lightning-input>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <lightning-input onchange={handleInfoChange} type="text" variant="label-stacked" name="Phone" label="Mobile" required></lightning-input>
                 </div>
             </div>
         </div>
