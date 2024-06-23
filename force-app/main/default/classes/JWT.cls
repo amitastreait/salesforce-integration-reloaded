@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Amit Singh - PantherSchools
  * @group             : 
- * @last modified on  : 05-04-2024
+ * @last modified on  : 06-23-2024
  * @last modified by  : Amit Singh - PantherSchools
 **/
 public class JWT {
@@ -25,8 +25,8 @@ public class JWT {
         Long expiry = rightNow.getTime(); // Unix TimeStamp
         
         String CLAIMS = '{'+
-            '"iss": "3MVG9OGq41FnYVsH1.oT0PkIJ35QxbbA7jiT3xfy5rblQ72OP7IBLZ_XV2RQz_AEPeoPQYTczFa28uZUhyY_3",'+
-            '"sub": "epic.58871712590567910@epic.th",'+
+            '"iss": "3MVG9OGq41FnYVsH1",'+
+            '"sub": "yourusername@gmail.com",'+
             '"aud": "https://login.salesforce.com",'+
             '"exp": '+expiry+
         '}';

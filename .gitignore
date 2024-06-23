@@ -40,7 +40,9 @@ $RECYCLE.BIN/
 # Local environment variables
 .env
 streaming-api/.env
-
+web
+razorpay
+web/main
 # Python Salesforce Functions
 **/__pycache__/
 **/.venv/

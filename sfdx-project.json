@@ -39,6 +39,10 @@
     {
       "path": "project/dropbox",
       "default": false
+    },
+    {
+      "path": "project/aws",
+      "default": false
     }
   ],
   "name": "salesforce-integration-reloaded",

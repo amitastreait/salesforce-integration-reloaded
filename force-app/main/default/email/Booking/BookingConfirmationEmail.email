@@ -1,0 +1,199 @@
+<messaging:emailTemplate subject="[TEST]: Your MuleDreamin Booking Confirmation" recipientType="Contact" relatedToType="Booking__c">
+    <messaging:plainTextEmailBody >
+        Dear {!relatedTo.Name},
+
+        Thank you for your booking! We are pleased to confirm your reservation.
+
+        Booking Details:
+        - Booking Number: {!relatedTo.BookingCode__c}
+        - Check-in Date:  {!relatedTo.EventStartDateTime__c}
+        - Check-out Date:  {!relatedTo.EventEndDateTime__c}
+        - Booking Amount:   <apex:outputText value="₹{0, number, ###,###,###,##0.00}">
+                                <apex:param value="{!relatedTo.Amount__c}" />
+                            </apex:outputText> 
+
+        We look forward to hosting you!
+
+        Best regards,
+        The Company Team
+    </messaging:plainTextEmailBody>
+    
+    <messaging:htmlEmailBody >
+        <html>
+        <head>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    color: #333;
+                    margin: 0;
+                    padding: 0;
+                }
+                .header {
+                    background-color: #D25D19; /* Main color from the logo */
+                    color: white;
+                    padding: 20px;
+                    text-align: center;
+                }
+                .content {
+                    padding: 20px;
+                }
+                .footer {
+                    background-color: #f2f2f2;
+                    padding: 10px;
+                    text-align: center;
+                    font-size: 12px;
+                    color: #777;
+                }
+                .booking-details {
+                    margin: 20px 0;
+                }
+                .booking-details table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                .booking-details th, .booking-details td {
+                    text-align: left;
+                    padding: 12px;
+                    border-bottom: 1px solid #ddd;
+                }
+                .booking-details th {
+                    background-color: #D25D19; /* Main color from the logo */
+                    color: white;
+                }
+                .qr-code {
+                    text-align: center;
+                    margin-top: 20px;
+                }
+                .qr-code img {
+                    max-width: 200px;
+                }
+                .logo {
+                    text-align: center;
+                    margin: 20px 0;
+                }
+                .logo img {
+                    max-width: 150px;
+                }
+                .button-container {
+                    text-align: center;
+                    margin: 20px 0;
+                }
+                .button {
+                    display: inline-block;
+                    padding: 10px 20px;
+                    margin: 10px;
+                    color: #4285F4;
+                    text-decoration: none;
+                    font-weight: bold;
+                    border: 2px solid transparent;
+                    border-radius: 4px;
+                }
+                .button.learn-more {
+                    border-color: #EA4335;
+                }
+                .button.blog {
+                    border-color: #4285F4;
+                }
+                .button.contact {
+                    border-color: #34A853;
+                }
+                .button:hover {
+                    background-color: #f0f0f0;
+                }
+                .color-bar {
+                    width: 100%;
+                    height: 10px;
+                    display: flex;
+                }
+                .color-bar div {
+                    flex: 1;
+                    height: 100%;
+                }
+                .color-bar .red { background-color: #D25D19; }
+                .color-bar .purple { background-color: #7E57C2; }
+                .color-bar .blue { background-color: #039BE5; }
+                .color-bar .green { background-color: #43A047; }
+                .color-bar .yellow { background-color: #FBBC05; }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>Booking Confirmation</h1>
+            </div>
+            <div class="logo">
+                <img src="https://shorturl.at/XBTTI" alt="MuleDreamin Logo"/>
+            </div>
+            <div class="content">
+                <p>Dear {!relatedTo.Name},</p>
+                <p>Thank you for your booking! We are pleased to confirm your reservation.</p>
+                <p>Here are the important details about your registration.</p>
+                <div class="booking-details">
+                    <table>
+                        <tr>
+                            <th>Booking ID</th>
+                            <td>{!relatedTo.BookingCode__c}</td>
+                        </tr>
+                        <tr>
+                            <th>Check-in Date</th>
+                            <td>
+                                <apex:outputText value="{0, date, MMMM d',' yyyy 'at' h:mm a}">
+                                    <apex:param value="{!relatedTo.EventStartDateTime__c}" /> 
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Check-out Date</th>
+                            <td>
+                                <apex:outputText value="{0, date, MMMM d',' yyyy 'at' h:mm a}">
+                                    <apex:param value="{!relatedTo.EventEndDateTime__c}" /> 
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Total Amount</th>
+                            <td>
+                                <apex:outputText value="₹{0, number, ###,###,###,##0.00}">
+                                    <apex:param value="{!relatedTo.Amount__c}" />
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="qr-code">
+                    <p>Show the below QR code at the registration desk at the day of Event for Scan:</p>
+                    <img src="{!relatedTo.BarCodeUrl__c}" alt="QR Code"/>
+                </div>
+                <p>We look forward to hosting you!</p>
+                <p>Best regards,</p>
+                <p>The MuleDreamin Team</p>
+                <div class="button-container">
+                    <a href="https://muledreamin.com/" target="_blank" class="button learn-more">Learn more</a>
+                    <a href="https://muledreamin.com/blogs.php" target="_blank" class="button blog">See the blog</a>
+                    <a href="mailto:contact@muledreamin.com" target="_blank" class="button contact">Contact Us</a>
+                </div>
+            </div>
+            <div class="color-bar">
+                <div class="red"></div>
+                <div class="purple"></div>
+                <div class="blue"></div>
+                <div class="green"></div>
+                <div class="yellow"></div>
+            </div>
+            <div class="footer">
+                <p>&copy; 2024 MuleDreamin. All rights reserved.</p>
+                <p>
+                    You are receiving this email because you have made a booking with us. If you prefer not to receive these types of emails, you may <a href="mailto:contact@muledreamin.com" style="color:#4285F4; text-decoration:underline;">unsubscribe</a> at any time.
+                </p>
+                <p>
+                    Our mailing address is:<br/>
+                    Sw-18 1st floor Starwood city Malibu Tower Sector 50 South City 2
+                </p>
+                <p>
+                    <strong>CAN-SPAM Compliance:</strong><br/>
+                    This email is being sent in compliance with the CAN-SPAM Act. If you no longer wish to receive communications from us, please click the unsubscribe link above.
+                </p>
+            </div>
+        </body>
+        </html>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>
