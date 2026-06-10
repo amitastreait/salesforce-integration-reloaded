@@ -11,7 +11,7 @@ public without sharing class CourseDetailService {
     public static sObject getCourseDetails(String recordId){
         try {
             return [SELECT Id, Name, Course__c, Course__r.Course_Cost__c,Course__r.Category__c,
-                        Course__r.CourseCode__c, Course__r.Course_Duration__c,
+                        Course__r.CourseCode__c, Course__r.Course_Duration__c, Course__r.AmountINR__c,
                         Start_Date_Time__c, End_Date_Time__c, Trainer__r.Name,
                         EnableRSVP__c, BookingUrl__c, Thumbnail__c, 
                         Max_Seat__c, Mode__c, Status__c, TotalBooking__c,

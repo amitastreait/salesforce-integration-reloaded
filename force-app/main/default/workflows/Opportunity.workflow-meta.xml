@@ -11,7 +11,7 @@
         <fields>Name</fields>
         <fields>StageName</fields>
         <fields>TotalOpportunityQuantity</fields>
-        <includeSessionId>true</includeSessionId>
+        <includeSessionId>false</includeSessionId>
         <integrationUser>integration@pantherschools.com</integrationUser>
         <name>Send Opportunities to SAP</name>
         <protected>false</protected>

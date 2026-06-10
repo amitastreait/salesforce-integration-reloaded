@@ -21,9 +21,9 @@
             </value>
         </inputParameters>
         <nameSegment>LogACall</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <environments>Default</environments>
     <interviewLabel>Batch Apex Error Event Subscriber {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Batch Apex Error Event Subscriber</label>

@@ -1,0 +1,51 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Freshdesk Ticket" icon-name="standard:case">
+
+        <lightning-spinner alternative-text="Creating Ticket in Freshdesk" size="small" variant="brand" lwc:if={isLoading}></lightning-spinner>
+
+        <div class="slds-m-around_small">
+            <lightning-input type="text" variant="standard" name="ContactName" label="Contact Name" required onchange={handleInputChange} ></lightning-input>
+            <lightning-input type="email" variant="standard" name="ContactEmail" label="Contact Email" required onchange={handleInputChange}></lightning-input>
+
+            <lightning-input type="text" variant="standard" name="Subject" label="Subject" required onchange={handleInputChange}></lightning-input>
+            <lightning-textarea name="Description" label="Description" onchange={handleInputChange}></lightning-textarea>
+
+            <lightning-combobox
+                name="Typex"
+                label="Type"
+                placeholder="Select Type"
+                onchange={handleInputChange}
+                options={typeoptions} >
+            </lightning-combobox>
+            <lightning-combobox
+                name="Status"
+                required
+                label="Status"
+                value = '2'
+                placeholder="Select Status"
+                onchange={handleInputChange}
+                options={sttausoptions} >
+            </lightning-combobox>
+
+            <lightning-combobox
+                name="Priority"
+                required
+                label="Priority"
+                placeholder="Select Priority"
+                onchange={handleInputChange}
+                options={prioritiesoptions} >
+            </lightning-combobox>
+            <lightning-combobox
+                name="Source"
+                required
+                label="Source"
+                onchange={handleInputChange}
+                placeholder="Select Source"
+                options={sourceoptions} >
+            </lightning-combobox>
+        </div>
+        <div class="slds-m-around_small">
+            <lightning-button variant="brand" label="Create Case" title="Create Case" onclick={handleClick}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

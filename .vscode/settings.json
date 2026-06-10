@@ -1,0 +1,5 @@
+{
+    "salesforcedx-vscode-core.show-cli-success-msg": false,
+    "salesforce.einsteinForDevelopers.enable": false,
+    "xml.preferences.showSchemaDocumentationType": "none"
+}

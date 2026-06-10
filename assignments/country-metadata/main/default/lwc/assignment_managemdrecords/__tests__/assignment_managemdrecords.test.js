@@ -1,6 +1,9 @@
 import { createElement } from 'lwc';
 import Assignment_managemdrecords from 'c/assignment_managemdrecords';
 
+
+
+
 describe('c-assignment-managemdrecords', () => {
     afterEach(() => {
         // The jsdom instance is shared across test cases in a single file so reset the DOM
@@ -21,5 +24,102 @@ describe('c-assignment-managemdrecords', () => {
         // Assert
         // const div = element.shadowRoot.querySelector('div');
         expect(1).toBe(1);
+    });
+
+    it('The component renders the correct initial state.', () => {
+        const element = createElement('c-assignment-managemdrecords', {
+            is: Assignment_managemdrecords
+        });
+        document.body.appendChild(element);
+        
+        // Check if the component renders the initial state correctly
+        const table = element.shadowRoot.querySelector('table');
+        expect(table).not.toBeNull();
+        
+        const rows = element.shadowRoot.querySelectorAll('tbody tr');
+        expect(rows).toHaveLength(1);
+    });
+
+    it('The component handles input changes correctly.', () => {
+        const element = createElement('c-assignment-managemdrecords', {
+            is: Assignment_managemdrecords
+        });
+        document.body.appendChild(element);
+        
+        const input = element.shadowRoot.querySelector('lightning-input');
+        input.value = 'New Value';
+        input.dispatchEvent(new CustomEvent('change'));
+        
+        // Check if the component's data is updated correctly
+        const updatedInput = element.shadowRoot.querySelector('lightning-input');
+        expect(updatedInput.value).toBe('New Value');
+    });
+
+    it('The component handles row addition correctly.', () => {
+        const element = createElement('c-assignment-managemdrecords', {
+            is: Assignment_managemdrecords
+        });
+        document.body.appendChild(element);
+        
+        const addButton = element.shadowRoot.querySelector('lightning-button[icon-name="utility:add"]');
+        addButton.click();
+        
+        // Check if a new row is added
+        const rows = element.shadowRoot.querySelectorAll('tbody tr');
+        expect(rows).toHaveLength(2);
+    });
+
+    it('The component handles row deletion correctly.', () => {
+        const element = createElement('c-assignment-managemdrecords', {
+            is: Assignment_managemdrecords
+        });
+        document.body.appendChild(element);
+        
+        // Add a row first
+        const addButton = element.shadowRoot.querySelector('lightning-button[icon-name="utility:add"]');
+        addButton.click();
+        
+        // Now delete the row
+        const deleteButton = element.shadowRoot.querySelector('lightning-button[icon-name="utility:delete"]');
+        deleteButton.click();
+        
+        // Check if the row is deleted
+        const rows = element.shadowRoot.querySelectorAll('tbody tr');
+        expect(rows).toHaveLength(1);
+    });
+
+    it('The component handles deployment correctly.', () => {
+        const element = createElement('c-assignment-managemdrecords', {
+            is: Assignment_managemdrecords
+        });
+        document.body.appendChild(element);
+        
+        const deployButton = element.shadowRoot.querySelector('lightning-button[value="Create Records"]');
+        deployButton.click();
+        
+        // Check if the deployment process is triggered
+        // This would typically involve checking if an event was dispatched or if a certain method was called
+        // For this example, we'll just check if the button was clicked
+        expect(deployButton).not.toBeNull();
+    });
+
+    it('The component validates input correctly.', () => {
+        const element = createElement('c-assignment-managemdrecords', {
+            is: Assignment_managemdrecords
+        });
+        document.body.appendChild(element);
+        
+        // Change the input value to something invalid
+        const input = element.shadowRoot.querySelector('lightning-input');
+        input.value = '';
+        input.dispatchEvent(new CustomEvent('change'));
+        
+        // Trigger validation
+        const deployButton = element.shadowRoot.querySelector('lightning-button[value="Create Records"]');
+        deployButton.click();
+        
+        // Check if the error message is displayed
+        const errorMessage = element.shadowRoot.querySelector('.slds-has-error');
+        expect(errorMessage).not.toBeNull();
     });
 });

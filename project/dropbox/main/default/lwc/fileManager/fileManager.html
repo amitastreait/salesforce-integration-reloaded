@@ -1,0 +1,288 @@
+<template>
+    <lightning-card title="File Manager" icon-name="standard:file">
+        <div class="slds-p-around_medium">
+            <!-- Tabs to switch between different views -->
+            <lightning-tabset>
+                <!-- Upload Files Tab -->
+                <lightning-tab label="Upload Files" icon-name="utility:upload">
+                    <div class="slds-p-around_medium">
+                        <div class="slds-text-heading_small slds-m-bottom_small">Upload Files to Salesforce</div>
+                        <lightning-file-upload
+                            label="Upload Files"
+                            name="fileUploader"
+                            accept={acceptedFormats}
+                            record-id={recordId}
+                            onuploadfinished={handleUploadFinished}
+                            multiple>
+                        </lightning-file-upload>
+                    </div>
+                </lightning-tab>
+                
+                <!-- Dropbox Files Tab -->
+                <lightning-tab label="Dropbox Files" icon-name="custom:custom70">
+                    <div class="slds-p-around_medium">
+                        <div class="slds-grid slds-gutters slds-m-bottom_small">
+                            <div class="slds-col">
+                                <div class="slds-text-heading_small">Dropbox Files for {recordName}</div>
+                            </div>
+                            <div class="slds-col slds-text-align_right">
+                                <lightning-button-icon 
+                                    icon-name="utility:refresh" 
+                                    alternative-text="Refresh" 
+                                    title="Refresh" 
+                                    onclick={refreshDropboxFiles}>
+                                </lightning-button-icon>
+                            </div>
+                        </div>
+                        
+                        <!-- Toggle view between tiles and table -->
+                        <div class="slds-grid slds-gutters slds-m-bottom_medium">
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input 
+                                    type="search" 
+                                    label="Search Files" 
+                                    onchange={handleSearchChange}>
+                                </lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 slds-text-align_right slds-align-bottom">
+                                <lightning-button-group>
+                                    <lightning-button-icon 
+                                        icon-name="utility:apps" 
+                                        variant={tilesViewBtnVariant}
+                                        alternative-text="Tiles View" 
+                                        title="Tiles View" 
+                                        onclick={switchToTilesView}>
+                                    </lightning-button-icon>
+                                    <lightning-button-icon 
+                                        icon-name="utility:table" 
+                                        variant={tableViewBtnVariant}
+                                        alternative-text="Table View" 
+                                        title="Table View" 
+                                        onclick={switchToTableView}>
+                                    </lightning-button-icon>
+                                </lightning-button-group>
+                            </div>
+                        </div>
+                        
+                        <!-- Loading spinner -->
+                        <template if:true={isLoading}>
+                            <div class="slds-is-relative slds-m-top_medium slds-m-bottom_medium">
+                                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                            </div>
+                        </template>
+                        
+                        <!-- Error message -->
+                        <template if:true={error}>
+                            <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                                <span class="slds-assistive-text">error</span>
+                                <h2>{error}</h2>
+                            </div>
+                        </template>
+                        
+                        <!-- Table View -->
+                        <template if:true={isTableView}>
+                            <template if:true={hasDropboxFiles}>
+                                <lightning-datatable
+                                    key-field="id"
+                                    data={filteredDropboxFiles}
+                                    columns={columns}
+                                    hide-checkbox-column
+                                    sorted-by={sortedBy}
+                                    sorted-direction={sortedDirection}
+                                    onsort={handleSort}>
+                                </lightning-datatable>
+                            </template>
+                            <template if:false={hasDropboxFiles}>
+                                <div class="slds-illustration slds-illustration_small">
+                                    <div class="slds-text-longform">
+                                        <p class="slds-text-align_center">No Dropbox files found</p>
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+                        
+                        <!-- Tiles View -->
+                        <template if:false={isTableView}>
+                            <template if:true={hasDropboxFiles}>
+                                <div class="slds-grid slds-wrap slds-gutters">
+                                    <template for:each={filteredDropboxFiles} for:item="file">
+                                        <div key={file.id} class="slds-col slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-4 slds-m-bottom_medium">
+                                            <div class="slds-box slds-box_link file-tile">
+                                                <div class="slds-media">
+                                                    <div class="slds-media__figure">
+                                                        <template if:true={file.isFolder}>
+                                                            <lightning-icon icon-name="doctype:folder" size="medium"></lightning-icon>
+                                                        </template>
+                                                        <template if:false={file.isFolder}>
+                                                            <lightning-icon icon-name="doctype:unknown" size="medium"></lightning-icon>
+                                                        </template>
+                                                    </div>
+                                                    <div class="slds-media__body">
+                                                        <h3 class="slds-truncate" title={file.name}>{file.name}</h3>
+                                                        <div class="slds-text-body_small slds-text-color_weak">
+                                                            <template if:false={file.isFolder}>
+                                                                {file.size} bytes • Modified {file.modifiedTime}
+                                                            </template>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                            <template if:false={hasDropboxFiles}>
+                                <div class="slds-illustration slds-illustration_small">
+                                    <div class="slds-text-longform">
+                                        <p class="slds-text-align_center">No Dropbox files found</p>
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+                    </div>
+                </lightning-tab>
+                
+                <!-- Salesforce Files Tab -->
+                <lightning-tab label="Stored Files" icon-name="standard:document">
+                    <div class="slds-p-around_medium">
+                        <div class="slds-grid slds-gutters slds-m-bottom_small">
+                            <div class="slds-col">
+                                <div class="slds-text-heading_small">Files Stored in Salesforce</div>
+                            </div>
+                            <div class="slds-col slds-text-align_right">
+                                <lightning-button-icon 
+                                    icon-name="utility:refresh" 
+                                    alternative-text="Refresh" 
+                                    title="Refresh" 
+                                    onclick={refreshStoredFiles}>
+                                </lightning-button-icon>
+                            </div>
+                        </div>
+                        
+                        <!-- Toggle view between tiles and table -->
+                        <div class="slds-grid slds-gutters slds-m-bottom_medium">
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-input 
+                                    type="search" 
+                                    label="Search Files" 
+                                    onchange={handleStoredFilesSearchChange}>
+                                </lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 slds-text-align_right slds-align-bottom">
+                                <lightning-button-group>
+                                    <lightning-button-icon 
+                                        icon-name="utility:apps" 
+                                        variant={storedFilesTilesViewBtnVariant} 
+                                        alternative-text="Tiles View" 
+                                        title="Tiles View" 
+                                        onclick={switchToStoredFilesTilesView}>
+                                    </lightning-button-icon>
+                                    <lightning-button-icon 
+                                        icon-name="utility:table" 
+                                        variant={storedFilesTableViewBtnVariant} 
+                                        alternative-text="Table View" 
+                                        title="Table View" 
+                                        onclick={switchToStoredFilesTableView}>
+                                    </lightning-button-icon>
+                                </lightning-button-group>
+                            </div>
+                        </div>
+                        
+                        <!-- Loading spinner -->
+                        <template if:true={isStoredFilesLoading}>
+                            <div class="slds-is-relative slds-m-top_medium slds-m-bottom_medium">
+                                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                            </div>
+                        </template>
+                        
+                        <!-- Error message -->
+                        <template if:true={storedFilesError}>
+                            <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                                <span class="slds-assistive-text">error</span>
+                                <h2>{storedFilesError}</h2>
+                            </div>
+                        </template>
+                        
+                        <!-- Table View -->
+                        <template if:true={isStoredFilesTableView}>
+                            <template if:true={hasStoredFiles}>
+                                <lightning-datatable
+                                    key-field="Id"
+                                    data={filteredStoredFiles}
+                                    columns={storedFilesColumns}
+                                    hide-checkbox-column
+                                    sorted-by={storedFilesSortedBy}
+                                    sorted-direction={storedFilesSortedDirection}
+                                    onsort={handleStoredFilesSort}>
+                                </lightning-datatable>
+                            </template>
+                            <template if:false={hasStoredFiles}>
+                                <div class="slds-illustration slds-illustration_small">
+                                    <div class="slds-text-longform">
+                                        <p class="slds-text-align_center">No stored files found</p>
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+                        
+                        <!-- Tiles View -->
+                        <template if:false={isStoredFilesTableView}>
+                            <template if:true={hasStoredFiles}>
+                                <div class="slds-grid slds-wrap slds-gutters">
+                                    <template for:each={filteredStoredFiles} for:item="file">
+                                        <div key={file.Id} class="slds-col slds-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-4 slds-m-bottom_medium">
+                                            <div class="slds-box slds-box_link file-tile">
+                                                <div class="slds-media">
+                                                    <div class="slds-media__figure">
+                                                        <lightning-icon icon-name="doctype:unknown" size="medium"></lightning-icon>
+                                                    </div>
+                                                    <div class="slds-media__body">
+                                                        <h3 class="slds-truncate" title={file.Name}>{file.Name}</h3>
+                                                        <div class="slds-text-body_small slds-text-color_weak">
+                                                            {file.Path__c}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                            <template if:false={hasStoredFiles}>
+                                <div class="slds-illustration slds-illustration_small">
+                                    <div class="slds-text-longform">
+                                        <p class="slds-text-align_center">No stored files found</p>
+                                    </div>
+                                </div>
+                            </template>
+                        </template>
+                    </div>
+                </lightning-tab>
+            </lightning-tabset>
+        </div>
+        
+        <!-- Toast notification -->
+        <div class="toast-message">
+            <template if:true={showToast}>
+                <div class={toastClass} role="status">
+                    <span class="slds-assistive-text">{toastVariant}</span>
+                    <span class="slds-icon_container slds-m-right_small" title={toastVariant}>
+                        <lightning-icon icon-name={toastIcon} size="small" variant="inverse"></lightning-icon>
+                    </span>
+                    <div class="slds-notify__content">
+                        <h2 class="slds-text-heading_small">{toastMessage}</h2>
+                    </div>
+                    <div class="slds-notify__close">
+                        <lightning-button-icon 
+                            icon-name="utility:close" 
+                            size="small" 
+                            variant="bare-inverse" 
+                            onclick={closeToast} 
+                            alternative-text="Close">
+                        </lightning-button-icon>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

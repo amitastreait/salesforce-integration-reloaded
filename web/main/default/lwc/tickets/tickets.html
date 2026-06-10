@@ -1,6 +1,20 @@
 <template>
     <lightning-spinner alternative-text="Loading" size="small" lwc:if={isLoading} variant="brand" ></lightning-spinner>
     <div class="container">
+        <!-- Error Container -->
+        <div lwc:if={errors} class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+            <span class="slds-assistive-text">error</span>
+            <span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+                title="Description of icon when needed">
+                <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+                    <use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#error"></use>
+                </svg>
+            </span>
+            <h2>
+                {errors}
+            </h2>
+        </div>
+
         <div class="info">
             <h1>Book tickets for <span class="highlight">Mule Dreamin</span></h1>
             <p>Fuel your knowledge, synergy, and social impact in the MuleSoft & Salesforce realm</p>

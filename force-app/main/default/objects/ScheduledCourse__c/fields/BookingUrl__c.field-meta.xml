@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>BookingUrl__c</fullName>
-    <externalId>false</externalId>
+    <defaultValue>&quot;https://course-pantherschools-dev-ed.develop.my.site.com/course/s/register-course?c__recordId=&quot;</defaultValue>
     <label>Booking Url</label>
     <required>false</required>
     <trackTrending>false</trackTrending>

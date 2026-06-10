@@ -46,7 +46,11 @@
 		<members>CourseRating__c</members>
 		<members>Course__c</members>
 		<members>Currency__c</members>
+		<members>DigitalProductToken__c</members>
+		<members>DigitalProduct__c</members>
 		<members>Employ__c</members>
+		<members>ErrorLog__c</members>
+		<members>Experience__c</members>
 		<members>Facebook_Config__mdt</members>
 		<members>FailedJobs__c</members>
 		<members>Google_Config__mdt</members>
@@ -60,11 +64,16 @@
 		<members>OrderStatus__e</members>
 		<members>PKCEHelper__c</members>
 		<members>PS_SalesforceConfig__c</members>
+		<members>Portfolio__c</members>
+		<members>Project__c</members>
 		<members>RazorpayConfig__mdt</members>
 		<members>RazorpayPaymentLink__c</members>
 		<members>SAP_Account__e</members>
 		<members>ScheduledCourse__c</members>
+		<members>Services__c</members>
+		<members>Skill__c</members>
 		<members>Spotify__mdt</members>
+		<members>StripeInvoice__c</members>
 		<members>TestMetadata__mdt</members>
 		<members>Trainer__c</members>
 		<members>TrainingCenter__c</members>
@@ -115,21 +124,31 @@
 		<members>CourseRating__c-Course Rating Layout</members>
 		<members>Course__c-Course Layout</members>
 		<members>Currency__c-Currency Layout</members>
+		<members>DigitalProductToken__c-Digital Product Token Layout</members>
+		<members>DigitalProduct__c-Digital Product Layout</members>
 		<members>Employ__c-Employ Layout</members>
+		<members>ErrorLog__c-Error Log Layout</members>
+		<members>Experience__c-Experience Layout</members>
 		<members>Facebook_Config__mdt-Facebook Config Layout</members>
 		<members>FailedJobs__c-Failed Jobs Layout</members>
 		<members>Google_Config__mdt-Google Config Layout</members>
 		<members>Lat_Lang__c-Lat Lang Layout</members>
 		<members>LinkedIn_Config__mdt-LinkedIn Config Layout</members>
+		<members>LinkedIn_Post_Comment__c-LinkedIn Post Comment Layout</members>
 		<members>LinkedIn_Post__c-LinkedIn Post Layout</members>
 		<members>LogoutEvent__c-LogoutEvent Layout</members>
 		<members>Media__c-Media Layout</members>
 		<members>PKCEHelper__c-PKCE Helper Layout</members>
 		<members>PS_SalesforceConfig__c-Salesforce Config Layout</members>
+		<members>Portfolio__c-Portfolio Layout</members>
+		<members>Project__c-Project Layout</members>
 		<members>RazorpayConfig__mdt-Razorpay Config Layout</members>
 		<members>RazorpayPaymentLink__c-Razorpay Payment Link Layout</members>
 		<members>ScheduledCourse__c-Scheduled Course Layout</members>
+		<members>Services__c-Services Layout</members>
+		<members>Skill__c-Skill Layout</members>
 		<members>Spotify__mdt-Spotify Layout</members>
+		<members>StripeInvoice__c-Stripe Invoice Layout</members>
 		<members>TestMetadata__mdt-Test Metadata Layout</members>
 		<members>Trainer__c-Trainer Layout</members>
 		<members>TrainingCenter__c-Training Center Layout</members>

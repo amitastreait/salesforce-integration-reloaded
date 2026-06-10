@@ -13,7 +13,7 @@
         <fields>LeadSource</fields>
         <fields>Phone</fields>
         <fields>Title</fields>
-        <includeSessionId>true</includeSessionId>
+        <includeSessionId>false</includeSessionId>
         <integrationUser>integration@pantherschools.com</integrationUser>
         <name>Send Contact to SAP</name>
         <protected>false</protected>

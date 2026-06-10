@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>QuickBooks_Customer__c</fullName>
-    <externalId>false</externalId>
     <label>QuickBooks Customer</label>
     <referenceTo>qb_Customer__c</referenceTo>
     <relationshipLabel>Quickbooks Invoices</relationshipLabel>

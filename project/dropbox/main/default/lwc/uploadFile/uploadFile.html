@@ -1,0 +1,27 @@
+<!-- uploadFile.html -->
+<template>
+    <lightning-card title="Upload File" icon-name="standard:file">
+        <div class="slds-m-around_large">
+            <div if:true={isLoading}>
+                <lightning-spinner alternative-text="Uploading..." size="small"></lightning-spinner>
+            </div>
+            <div if:false={isLoading}>
+                <div if:true={message}>
+                    {message}
+                </div>
+                <lightning-input 
+                  type="text"
+                  label="Field API Name"
+                  required
+                  value={fieldApiName}
+                  onchange={handleChange}
+                ></lightning-input>
+                <lightning-input type="file" label="Select File" onchange={handleFileChange}></lightning-input>
+                <template if:true={file}>
+                    <p>Selected File: {file.name} &nbsp; &nbsp; {fileSize} </p>
+                </template>
+                <lightning-button label="Upload" onclick={uploadFile}></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

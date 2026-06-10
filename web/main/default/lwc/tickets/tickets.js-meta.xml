@@ -9,4 +9,10 @@
         <target>lightningCommunity__Page</target>
         <target>lightningCommunity__Default</target>
     </targets>
+    <!-- Configuring the design attributes -->
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="eventName" type="String" default="One Dreamin" label="Enter the Event name"/>
+        </targetConfig>
+    </targetConfigs>
 </LightningComponentBundle>

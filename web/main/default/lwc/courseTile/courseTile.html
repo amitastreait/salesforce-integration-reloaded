@@ -1,6 +1,7 @@
 <template>
     <div class="course-card">
-        <img src={course.Thumbnail__c} onclick={handleClick} alt="Course Image" style="cursor: pointer;" class="course-image">
+        <img if:true={course.Thumbnail__c} src={course.Thumbnail__c} onclick={handleClick} alt="Course Image" style="cursor: pointer;" class="course-image">
+        <img if:false={course.Thumbnail__c} onclick={handleClick} src={defaultInage} alt="Course Image" style="cursor: pointer;" class="course-image">
         <div class="course-content">
             <h2 class="heading" onclick={handleClick} style="cursor: pointer;" >{course.Name}</h2>
             <p class="instructor" onclick={handleAuthorClick} style="cursor: pointer;" >Amit Singh</p>
