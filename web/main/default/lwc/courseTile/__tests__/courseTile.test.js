@@ -22,4 +22,96 @@ describe('c-course-tile', () => {
         // const div = element.shadowRoot.querySelector('div');
         expect(1).toBe(1);
     });
+
+    it('should render the course card correctly', () => {
+        const element = createElement('c-course-tile', {
+            is: CourseTile
+        });
+        
+        // Set course with no thumbnail
+        element.course = {
+            Id: '123',
+            Name: 'Test Course',
+            Course__r: {
+                Course_Cost__c: 100
+            }
+        };
+        document.body.appendChild(element);
+    
+        // Check if the default image is used
+        const img = element.shadowRoot.querySelector('.course-image');
+        expect(img).not.toBeNull();
+        expect(img.src).toContain('https://course-pantherschools-dev-ed.develop.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Jpg&oid=00DHu000003NXeO&versionId=068Hu00000dB7Tn&d=%2Fa%2FHu000000oZGx%2FMtbrzdaHHNzl5CeAJcSLS1PJU7.iP9qobFEwxBeN53I&asPdf=false');
+    });
+
+    it('should navigate to course details page on course click', async () => {
+        const element = createElement('c-course-tile', {
+            is: CourseTile
+        });
+        
+        // Set course with thumbnail
+        element.course = {
+            Id: '123',
+            Name: 'Test Course',
+            Thumbnail__c: 'https://example.com/image.jpg',
+            Course__r: {
+                Course_Cost__c: 100
+            }
+        };
+        document.body.appendChild(element);
+    
+        // Mock the navigation function
+        const navigateSpy = jest.fn();
+        element[NavigationMixin.Navigate] = navigateSpy;
+    
+        // Simulate course click
+        const courseImage = element.shadowRoot.querySelector('.course-image');
+        courseImage.click();
+    
+        // Wait for the navigation to be called
+        await Promise.resolve();
+        expect(navigateSpy).toHaveBeenCalledWith({
+            type: "standard__namedPage",
+            attributes: {
+                pageName: "course-details"
+            },
+            state: {
+                "c__recordId" : "123"
+            }
+        });
+    });
+
+    it('should navigate to author\'s LinkedIn page on author click', async () => {
+        const element = createElement('c-course-tile', {
+            is: CourseTile
+        });
+        
+        // Set course with thumbnail
+        element.course = {
+            Id: '123',
+            Name: 'Test Course',
+            Thumbnail__c: 'https://example.com/image.jpg',
+            Course__r: {
+                Course_Cost__c: 100
+            }
+        };
+        document.body.appendChild(element);
+    
+        // Mock the navigation function
+        const navigateSpy = jest.fn();
+        element[NavigationMixin.Navigate] = navigateSpy;
+    
+        // Simulate author click
+        const authorLink = element.shadowRoot.querySelector('.instructor');
+        authorLink.click();
+    
+        // Wait for the navigation to be called
+        await Promise.resolve();
+        expect(navigateSpy).toHaveBeenCalledWith({
+            type: "standard__webPage",
+            attributes: {
+               url: `https://www.linkedin.com/in/cloudyamit/`
+            }
+        });
+    });
 });

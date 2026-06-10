@@ -2,10 +2,10 @@
  * @description       : 
  * @author            : Amit Singh - PantherSchools
  * @group             : 
- * @last modified on  : 06-23-2024
+ * @last modified on  : 07-10-2024
  * @last modified by  : Amit Singh - PantherSchools
 **/
-trigger AccountTrigger on Account (after insert, after update) {
+trigger AccountTrigger on Account (after insert, after update, before update) {
 
     if(Trigger.isAfter){
         if(Trigger.isInsert && !System.isBatch() && !System.isFuture() && !System.isQueueable() ){
@@ -22,5 +22,17 @@ trigger AccountTrigger on Account (after insert, after update) {
                 AccountTriggerHandler.createBucket(new List<Account>{acc});
             }
         }
+    }else if (trigger.isBefore && trigger.isUpdate) {
+        System.debug('Before Update Trigger');
+        for (Account acc : trigger.new) {
+            Account oldAcc = trigger.oldMap.get(acc.Id);
+            System.debug('Processing Account Id: ' + acc.Id);
+            if (acc.Rating == 'Hot' && oldAcc.Rating != 'Hot') {
+                System.debug('Rating has changed to Hot. Old: ' + oldAcc.Rating + ', New: ' + acc.Rating);
+                OpenCodeGeocoderService.getReverseGeoCoding(acc.Id);
+                System.debug('Called getReverseGeoCoding for Account Id: ' + acc.Id);
+            }
+        }
     }
+
 }

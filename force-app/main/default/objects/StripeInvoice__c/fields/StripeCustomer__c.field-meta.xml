@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StripeCustomer__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>This is the Lookup field related to Account Object</description>
+    <inlineHelpText>This is the Lookup field related to Account Object</inlineHelpText>
+    <label>Stripe Customer</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Stripe Invoices</relationshipLabel>
+    <relationshipName>StripeInvoices</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

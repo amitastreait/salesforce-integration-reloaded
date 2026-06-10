@@ -13,6 +13,7 @@ deploy-options.json
 
 # LWC Jest coverage reports
 coverage/
+docs/
 
 # Logs
 logs
@@ -41,6 +42,7 @@ $RECYCLE.BIN/
 .env
 streaming-api/.env
 web
+web/
 razorpay
 web/main
 # Python Salesforce Functions

@@ -10,6 +10,19 @@ export default class DropboxFileManager extends LightningElement {
     isLoading = false;
     @api filePath = '/';
 
+    @api fieldApiName = 'Name';
+
+    @wire(queryName, { recordId: '$recordId', fieldApiName: '$fieldApiName', objectApiName: '$objectApiName' })
+    wiredData({ error, data }) {
+      if (data && data.Id) {
+        console.log('Data', data);
+        this.filePath = data[this.fieldApiName];
+      } else if (error) {
+         console.error('Error:', error);
+      }
+    }
+
+
     /**
     * [
         {

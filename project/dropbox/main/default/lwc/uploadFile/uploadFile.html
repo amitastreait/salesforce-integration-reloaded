@@ -1,24 +1,27 @@
-<!--
-    @description       : 
-    @author            : ChangeMeIn@UserSettingsUnder.SFDoc
-    @group             : 
-    @last modified on  : 12-18-2020
-    @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
-    Modifications Log 
-    Ver   Date         Author                               Modification
-    1.0   12-17-2020   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
--->
+<!-- uploadFile.html -->
 <template>
-    <lightning-spinner if:true={isLoading} alternative-text="Loading" size="small"></lightning-spinner>
-    <div class="slds-m-around_small">
-        <lightning-input label="" name="file uploader" onchange={handleFilesChange} type="file" multiple></lightning-input>
-    </div>
-    <div class="slds-m-around_small">
-        <template if:true={fileName}>
-            {fileName} &nbsp; &nbsp; {fileSize}
-        </template>
-    </div>
-    <div class="slds-m-around_small">
-        <lightning-button variant="success" label="Upload" title="Upload" onclick={saveFile}></lightning-button>
-    </div>
+    <lightning-card title="Upload File" icon-name="standard:file">
+        <div class="slds-m-around_large">
+            <div if:true={isLoading}>
+                <lightning-spinner alternative-text="Uploading..." size="small"></lightning-spinner>
+            </div>
+            <div if:false={isLoading}>
+                <div if:true={message}>
+                    {message}
+                </div>
+                <lightning-input 
+                  type="text"
+                  label="Field API Name"
+                  required
+                  value={fieldApiName}
+                  onchange={handleChange}
+                ></lightning-input>
+                <lightning-input type="file" label="Select File" onchange={handleFileChange}></lightning-input>
+                <template if:true={file}>
+                    <p>Selected File: {file.name} &nbsp; &nbsp; {fileSize} </p>
+                </template>
+                <lightning-button label="Upload" onclick={uploadFile}></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
 </template>

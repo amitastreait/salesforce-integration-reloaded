@@ -8,8 +8,10 @@
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage">
-            <property name="filePath" type="String" required="true" label="The dropbox file path" 
-                description="The dropbox file path" default="/" />
+            <!-- <property name="filePath" type="String" required="true" label="The dropbox file path" 
+                description="The dropbox file path" default="/" /> -->
+            <property name="fieldApiName" type="String" required="true" label="The Field API Name" 
+                description="The field API name whoose value will be used as the folder for the Dropbox API" default="Name" />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

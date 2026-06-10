@@ -1,8 +1,68 @@
 public with sharing class DropboxFileManagerHandler {
 
-    @AuraEnabled(cacheable=true)
-    public static sObject queryName(String query){
+    /**
+     * Example usage:
+     * Object result = DropboxFileManagerHandler.invokeUploadFile('068Hu00000c7OA1IAM','/salesforce/external_service','001Hu000038vjS2IAI');
+     * System.debug('Result: ' + result);
+     */
+    public static Object invokeUploadFile(String fileIdVersion, String filePath, String recordId) {
+
+        // Initialize the External Service
+        ExternalService.DropboxFileManagerHandler service = new ExternalService.DropboxFileManagerHandler();
+
+        // Create request object
+        ExternalService.DropboxFileManagerHandler.uploadFile_Request request = new ExternalService.DropboxFileManagerHandler.uploadFile_Request();
+
+        // Set the request body
+        // Create the body object with the required parameters
+        ExternalService.DropboxFileManagerHandler_uploadFile_IN_body body = new ExternalService.DropboxFileManagerHandler_uploadFile_IN_body();
+
+        body.fileId = fileIdVersion;
+        body.filePath = filePath;
+        body.recordId = recordId;
+
+        request.body = body;
+        System.debug('Request body set: ' + JSON.serializePretty(body));
+
         try {
+            // Invoke the External Service operation
+            ExternalService.DropboxFileManagerHandler.uploadFile_Response response = service.uploadFile(request);
+
+            // Process the response
+            // The response should contain the result from the @AuraEnabled method
+            System.debug('Upload completed successfully');
+            System.debug('Response: ' + JSON.serializePretty(response));
+
+            return response;
+
+        } catch (ExternalService.DropboxFileManagerHandler.uploadFile_ResponseException e) {
+            // Handle External Service specific exceptions
+            System.debug('External Service error: ' + e.getMessage());
+            System.debug('Response code: ' + e.responseCode);
+
+            if (e.responseCode == 400) {
+                throw new AuraHandledException('Bad request: ' + e.getMessage());
+            } else if (e.responseCode == 401 || e.responseCode == 403) {
+                throw new AuraHandledException('Authentication error: ' + e.getMessage());
+            } else if (e.responseCode == 404) {
+                throw new AuraHandledException('Resource not found: ' + e.getMessage());
+            } else if (e.responseCode == 500) {
+                throw new AuraHandledException('Server error: ' + e.getMessage());
+            } else {
+                throw new AuraHandledException('Failed to upload file: ' + e.getMessage());
+            }
+
+        } catch (Exception e) {
+            System.debug('Unexpected error: ' + e.getMessage());
+            System.debug('Stack trace: ' + e.getStackTraceString());
+            throw new AuraHandledException('Unexpected error: ' + e.getMessage());
+        }
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static sObject queryName(String recordId, String fieldApiName, String objectApiName){
+        try {
+            String query = 'SELECT Id, '+ fieldApiName +' FROM ' + objectApiName + ' WHERE Id = \'' + recordId + '\' LIMIT 1';
             return Database.query(query);
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());

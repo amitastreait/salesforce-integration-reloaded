@@ -318,6 +318,155 @@ public with sharing class PS_DropboxService {
     }
 
     /**
+     * Get file preview from Dropbox
+     * @param accessToken - Dropbox access token
+     * @param filePath - Path to the file in Dropbox (e.g., '/path/to/file.pdf')
+     * @return DropboxPreviewResponse - Response containing preview data
+     */
+    @AuraEnabled
+    public static DropboxPreviewResponse getFilePreview(String filePath) {
+        try {
+            // Create HTTP request
+            HttpRequest request = new HttpRequest();
+            request.setEndpoint('callout:'+'/2/files/get_preview');
+            request.setMethod('POST');
+            
+            request.setHeader('Content-Type', 'application/octet-stream');
+            request.setHeader('Dropbox-API-Arg', JSON.serialize(new DropboxApiArg(filePath)));
+            
+            // Set empty body (required for content-download endpoints)
+            request.setBody('');
+            
+            // Set timeout (max 120 seconds for Salesforce)
+            request.setTimeout(120000);
+            
+            // Send request
+            Http http = new Http();
+            HttpResponse response = http.send(request);
+            
+            // Process response
+            return processResponse(response);
+            
+        } catch (Exception e) {
+            System.debug('Error getting file preview: ' + e.getMessage());
+            return new DropboxPreviewResponse(false, e.getMessage(), null, null, null);
+        }
+    }
+
+    /**
+     * Process the HTTP response from Dropbox API
+     */
+    private static DropboxPreviewResponse processResponse(HttpResponse response) {
+        DropboxPreviewResponse result = new DropboxPreviewResponse();
+        
+        try {
+            if (response.getStatusCode() == 200) {
+                // Success - extract metadata from headers
+                String dropboxApiResult = response.getHeader('Dropbox-API-Result');
+                
+                if (String.isNotBlank(dropboxApiResult)) {
+                    // Parse the metadata
+                    DropboxFileMetadata metadata = (DropboxFileMetadata) JSON.deserialize(
+                        dropboxApiResult, DropboxFileMetadata.class
+                    );
+                    result.metadata = metadata;
+                }
+                
+                // Get the preview content
+                Blob previewContent = response.getBodyAsBlob();
+                result.previewContent = previewContent;
+                result.contentType = response.getHeader('Content-Type');
+                result.success = true;
+                result.message = 'Preview retrieved successfully';
+                
+            } else {
+                // Handle error response
+                String errorBody = response.getBody();
+                System.debug('Dropbox API Error: ' + response.getStatusCode() + ' - ' + errorBody);
+                
+                try {
+                    DropboxError errorObj = (DropboxError) JSON.deserialize(errorBody, DropboxError.class);
+                    result.message = 'Error: ' + errorObj.error_summary;
+                } catch (Exception e) {
+                    result.message = 'HTTP Error ' + response.getStatusCode() + ': ' + errorBody;
+                }
+                
+                result.success = false;
+            }
+            
+        } catch (Exception e) {
+            result.success = false;
+            result.message = 'Error processing response: ' + e.getMessage();
+            System.debug('Response processing error: ' + e.getMessage());
+        }
+        
+        return result;
+    }
+
+    /**
+     * Response wrapper class
+     */
+    public class DropboxPreviewResponse {
+        public Boolean success;
+        public String message;
+        public Blob previewContent;
+        public String contentType;
+        public DropboxFileMetadata metadata;
+        
+        public DropboxPreviewResponse() {
+            this.success = false;
+        }
+        
+        public DropboxPreviewResponse(Boolean success, String message, Blob content, 
+                                    String contentType, DropboxFileMetadata metadata) {
+            this.success = success;
+            this.message = message;
+            this.previewContent = content;
+            this.contentType = contentType;
+            this.metadata = metadata;
+        }
+    }
+    
+    /**
+     * File metadata from Dropbox API response
+     */
+    public class DropboxFileMetadata {
+        public String name;
+        public String path_lower;
+        public String path_display;
+        public String id;
+        public String client_modified;
+        public String server_modified;
+        public String rev;
+        public Long size;
+        public String tag; // Should be "file" for files
+    }
+    
+    /**
+     * Error response structure
+     */
+    public class DropboxError {
+        public String error_summary;
+        public DropboxErrorDetail error;
+    }
+    
+    public class DropboxErrorDetail {
+        public String tag;
+        // Add other error fields as needed
+    }
+
+    /**
+     * Request parameter class for Dropbox API
+     */
+    public class DropboxApiArg {
+        public String path;
+        
+        public DropboxApiArg(String filePath) {
+            this.path = filePath;
+        }
+    }
+
+    /**
      * @description Custom exception for Dropbox API errors
      */
     public class DropboxException extends Exception {}

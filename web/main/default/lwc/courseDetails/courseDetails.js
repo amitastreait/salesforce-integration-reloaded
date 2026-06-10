@@ -6,8 +6,11 @@ export default class CourseDetails extends NavigationMixin(LightningElement) {
   currentPageReference;
   recordId;
   @track course={};
+  defaultInage = 'https://course-pantherschools-dev-ed.develop.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Jpg&oid=00DHu000003NXeO&versionId=068Hu00000dB7Tn&d=%2Fa%2FHu000000oZGx%2FMtbrzdaHHNzl5CeAJcSLS1PJU7.iP9qobFEwxBeN53I&asPdf=false';
 
   isLoading = true;
+  couponCode = '';
+  couponInvalidMessage = '';
 
   @wire(CurrentPageReference)
   setCurrentPageReference(currentPageReference) {
@@ -36,5 +39,20 @@ export default class CourseDetails extends NavigationMixin(LightningElement) {
            url: this.course.BookingUrl__c
         }
     });
+  }
+
+  handleChange(event){
+    event.preventDefault();
+    this.couponCode = event.target.value;
+  }
+
+  handleApply(event){
+    event.preventDefault();
+    if(!this.couponCode){
+      this.couponInvalidMessage = 'Please enter a valid coupon code!';
+      return;
+    }else{
+      
+    }
   }
 }

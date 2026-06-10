@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Amit Singh - PantherSchools
  * @group             : 
- * @last modified on  : 04-06-2024
+ * @last modified on  : 06-26-2024
  * @last modified by  : Amit Singh - PantherSchools
 **/
 public with sharing class UploadFileController {
@@ -26,6 +26,7 @@ public with sharing class UploadFileController {
             distribution.PreferencesNotifyOnVisit = false;
             distribution.PreferencesAllowViewInBrowser = true;
             distribution.PreferencesAllowOriginalDownload=true;
+            distribution.PreferencesAllowPDFDownload = true;
             insert distribution;
 
             ContentDistribution distributionRecord = [Select Id, ContentDownloadUrl 

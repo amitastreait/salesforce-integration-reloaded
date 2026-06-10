@@ -1,5 +1,5 @@
 {
-  "packageDirectories": [ 
+  "packageDirectories": [
     {
       "path": "assignments/apex-rest",
       "default": false
@@ -48,5 +48,5 @@
   "name": "salesforce-integration-reloaded",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "60.0"
+  "sourceApiVersion": "67.0"
 }

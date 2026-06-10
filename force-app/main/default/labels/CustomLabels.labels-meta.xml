@@ -17,6 +17,14 @@
         <value>81</value>
     </labels>
     <labels>
+        <fullName>BookingConfirmationEmail</fullName>
+        <categories>event</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>BookingConfirmationEmail</shortDescription>
+        <value>BookingConfirmationEmail</value>
+    </labels>
+    <labels>
         <fullName>CallbackAPIEndpoint</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -158,5 +166,34 @@
         <protected>true</protected>
         <shortDescription>Zendesk_Username</shortDescription>
         <value>youremail@gmail.com/token</value>
+    </labels>
+    <labels>
+        <fullName>fromEmailAddress</fullName>
+        <categories>event</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fromEmailAddress</shortDescription>
+        <value>contact@muledreamin.com</value>
+    </labels>
+    <labels>
+        <fullName>FreshDeskAPIKey</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>FreshDeskAPIKey</shortDescription>
+        <value>zwpeY8brZT5hA4bE524j</value>
+    </labels>
+    <labels>
+        <fullName>RazorPayConfig</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RazorPayConfig</shortDescription>
+        <value>Sandbox</value>
+    </labels>
+    <labels>
+        <fullName>RazorPayNamedCredentials</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RazorPayNamedCredentials</shortDescription>
+        <value>RazorPay</value>
     </labels>
 </CustomLabels>

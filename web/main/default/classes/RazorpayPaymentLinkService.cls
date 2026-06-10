@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Amit Singh - PantherSchools
  * @group             : 
- * @last modified on  : 06-18-2024
+ * @last modified on  : 06-22-2024
  * @last modified by  : Amit Singh - PantherSchools
 **/
 public without sharing class RazorpayPaymentLinkService {
@@ -24,17 +24,21 @@ public without sharing class RazorpayPaymentLinkService {
 
             String payLink = (String)responseMap.get('short_url');
 
+            List<BookingWrapper> bookings = (List<BookingWrapper>)System.JSON.deserialize(bookingInfo, List<BookingWrapper>.class);
+
             Contact customerRecord = new Contact();
             customerRecord.LastName = (String)customerInfo.get('Name');
             customerRecord.Phone = (String)customerInfo.get('Phone');
             customerRecord.Email = (String)customerInfo.get('Email');
+            customerRecord.EventName__c = (String)customerInfo.get('eventName');
+            customerRecord.BookingAmount__c = input.amount;
+            customerRecord.TotalBooking__c = bookings?.size();
 
             insert as system customerRecord;
 
-            List<BookingWrapper> bookings = (List<BookingWrapper>)System.JSON.deserialize(bookingInfo, List<BookingWrapper>.class);
-            
             List<Booking__c> bookingRecords = new List<Booking__c>();
             for (BookingWrapper item : bookings) {
+                String bookingCode = System.Label.EventPrefix+generateRandomString(10).toUpperCase();
                 Booking__c booking = new Booking__c(
                     Customer__c    = customerRecord.Id,
                     Email__c       = item.Email,
@@ -43,11 +47,17 @@ public without sharing class RazorpayPaymentLinkService {
                     Status__c      = 'Created',
                     Company__c     = item.Organization,
                     Size__c        = item.Size,
-                    BookingCode__c = 'MD-'+generateRandomString(10),
+                    BookingCode__c = bookingCode,
                     ReferenceID__c = (String)responseMap.get('reference_id'),
-                    Amount__c      = ((Decimal)responseMap.get('amount')/100),
+                    Amount__c      = (input.amount/bookings?.size()),
                     PaymentUrl__c  = payLink,
-                    PaymentId__c   = (String)responseMap.get('id')
+                    PaymentId__c   = (String)responseMap.get('id'),
+                    PaymentLinkID__c = (String)responseMap.get('id'),
+                    EventName__c   = (String)customerInfo.get('eventName'),
+                    EventYear__c   = String.valueOf(System.today().year()),
+                    BarCodeUrl__c  = 'https://bwipjs-api.metafloor.com/?bcid=qrcode&text='+bookingCode+'&scale=2&rotate=N&backgroundcolor=ffffff',
+                    EventStartDateTime__c = Datetime.newInstance(2024, 9, 28, 8, 0, 0),
+                    EventEndDateTime__c = Datetime.newInstance(2024, 9, 28, 18, 0, 0)
                 );
                 bookingRecords.add(booking);
             }
@@ -56,6 +66,16 @@ public without sharing class RazorpayPaymentLinkService {
 
             return payLink;
         } catch (Exception e) {
+            ErrorLog__c log = new Logger()
+                .withComponentName('RazorpayPaymentLinkService')
+                .withErrorMessage(e.getMessage())
+                .withEventName(System.Label.EventName)
+                .withMethodName('process')
+                .withDescription('User is trying to book the tickets for the event')
+                .withDateTime(System.now())
+                .withStackTrace(e.getStackTraceString())
+                .withYear(System.today())
+                .build();
             throw new AuraHandledException(e.getMessage());
         }
     }
@@ -66,6 +86,16 @@ public without sharing class RazorpayPaymentLinkService {
             Map<String, Object> responseMap = (Map<String, Object>)JSON.deserializeUntyped(httpRes.getBody());
             return responseMap;
         }else {
+            ErrorLog__c log = new Logger()
+                .withComponentName('RazorpayPaymentLinkService')
+                .withErrorMessage('Unknown error occured while creating the Payment Link')
+                .withEventName(System.Label.EventName)
+                .withMethodName('createPaymentLink')
+                .withDescription('The process is trying to create the payment link Razorpay for the booking process.')
+                .withDateTime(System.now())
+                .withStackTrace('RazorpayPaymentLinkService.createPaymentLink')
+                .withYear(System.today())
+                .build();
             throw new AuraHandledException('Unknown error occured while creating the Payment Link');
         }
     }

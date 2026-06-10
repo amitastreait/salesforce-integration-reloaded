@@ -1,8 +1,10 @@
 <template>
     <lightning-spinner alternative-text="Loading" size="medium" variant="brand" lwc:if={isLoading}></lightning-spinner>
     <lightning-card variant="Narrow" title="Dropbox File Manager" icon-name="standard:file">
+        <div class="slds-m-bottom_small slds-p-left_large">
+            <span>Upload file to {filePath}</span>
+        </div>
         <div class="slds-p-around_large">
-            <span>Upload file for {name}</span>
             <lightning-file-upload
                 label="Upload File"
                 name="fileUploader"

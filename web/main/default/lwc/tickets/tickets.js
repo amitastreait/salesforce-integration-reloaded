@@ -1,4 +1,4 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, api, track } from 'lwc';
 import process from '@salesforce/apex/RazorpayPaymentLinkService.process';
 import basePath from "@salesforce/community/basePath";
 import CallbackAPIEndpoint from '@salesforce/label/c.CallbackAPIEndpoint';
@@ -14,10 +14,12 @@ export default class BookTickets extends NavigationMixin(LightningElement) {
 
     customerInfo = {}
 
+    @api eventName = 'Mule Dreamin';
+
     callbackUrl;
+    errors;
     connectedCallback(){
         this.callbackUrl = this.baseUrl()+basePath+'/'+CallbackAPIEndpoint;
-        console.log(this.callbackUrl);
     }
 
     get options(){
@@ -64,8 +66,10 @@ export default class BookTickets extends NavigationMixin(LightningElement) {
         }, true);
         
         if (allValid) {
+            this.errors = undefined;
             this.isLoading = true;
             this.customerInfo.callback_url = this.callbackUrl;
+            this.customerInfo.eventName = this.eventName;
             this.customerInfo.amount = this.totalPrice;
             
             process({
@@ -73,6 +77,7 @@ export default class BookTickets extends NavigationMixin(LightningElement) {
                 bookingInfo  : JSON.stringify(this.registrationForms) 
             })
               .then(result => {
+                this.errors = undefined;
                 const event = new ShowToastEvent({
                     title: 'Success!',
                     message: 'We are redirecting you to {0} ! Please wait, if it get stuck, click {1} to redirect!',
@@ -87,14 +92,6 @@ export default class BookTickets extends NavigationMixin(LightningElement) {
                 });
                 this.dispatchEvent(event);
                 window.location.href = result;
-                /* this[NavigationMixin.Navigate]({
-                    type: "standard__webPage",
-                    attributes: {
-                       url: result
-                    }
-                },
-                true
-              ); */
             })
             .catch(error => {
                 console.error(JSON.stringify(error));
@@ -112,6 +109,7 @@ export default class BookTickets extends NavigationMixin(LightningElement) {
                     ],
                 });
                 this.dispatchEvent(event);
+                this.errors = 'Error While Creating Booking ! Please try again, if you get the same error, please email us at contact@muledreamin.com';
             })
             .finally(()=>{
                 this.isLoading = false;

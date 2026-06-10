@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Amit Singh - PantherSchools
  * @group             : 
- * @last modified on  : 06-13-2024
+ * @last modified on  : 08-04-2024
  * @last modified by  : Amit Singh - PantherSchools
 **/
 public without sharing class CourseListService {
@@ -18,7 +18,7 @@ public without sharing class CourseListService {
                         FROM
                             ScheduledCourse__c 
                         WHERE
-                            Status__c = 'Confirmed'
+                            Status__c NOT IN ('Draft', 'Cancelled')
                     ];
             return courseList;
         } catch (Exception e) {

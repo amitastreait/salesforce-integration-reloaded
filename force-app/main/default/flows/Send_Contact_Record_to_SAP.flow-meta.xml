@@ -9,9 +9,9 @@
         <actionType>outboundMessage</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <nameSegment>Contact.Send_Contact_to_SAP</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <environments>Default</environments>
     <interviewLabel>Send Contact Record to SAP {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Send Contact Record to SAP</label>

@@ -1,5 +1,5 @@
 <template>
-    <lightning-spinner alternative-text="Loading" size="small" variant="brand" lwc:if={isLoading}></lightning-spinner>
+    <lightning-spinner alternative-text="Loading" size="small" variant="brand" if:true={isLoading}></lightning-spinner>
     <div class="container">
 
         <div if:false={success} class="slds-notify slds-notify_alert slds-alert_error" role="alert">
@@ -15,7 +15,7 @@
             </h2>
         </div>
 
-        <div class="info">
+        <!-- <div class="info">
             <h1>Book tickets for <span class="highlight">Mule Dreamin</span></h1>
             <p>Fuel your knowledge, synergy, and social impact in the MuleSoft & Salesforce realm</p>
             <h2>About Mule Dreamin</h2>
@@ -23,10 +23,35 @@
                 the MuleSoft and Salesforce ecosystem. It empowers attendees to deepen their comprehension of MuleSoft
                 and Salesforce technologies, exchange innovative ideas, and forge connections with like-minded
                 professionals.</p>
-            <h3>Terms & Conditions</h3>
+            <h3 style="color: red;">Terms & Conditions</h3>
             <p>Once bought, no monetary refunds will be given. You can only transfer the ticket to another person. You
                 must inform the recipient of details to the organizing team by writing an email to the organizing team.
             </p>
+        </div> -->
+
+        <div class="slds-m-around_small" if:true={bookings}>
+            <c-download tickets={bookings} reference-id={referenceId} event-name="Mule Dreamin" ></c-download>
+        </div>
+        
+        <div if:true={bookings} class="slds-m-top_medium">
+            <p class="slds-m-top_small">
+                Please keep the booking reference Id for future reference.
+            </p>
+            <div class="slds-m-top_medium">
+                <strong>Here is your Booking Reference ID(s):</strong> <span style="color: darkgreen; " > <strong> {referenceId}</strong></span>
+            </div>
+            <div class="slds-m-top_medium">
+                You need to show this booking Id at the registration desk on the event day.
+                <div class="slds-m-top_medium">
+                    <strong>Here is/are your Booking ID:</strong>
+                </div>
+                <template for:each={bookings} for:item="item" for:index="index" >
+                    <p key={item.Id}>
+                        <span style="color: darkgreen; "> <strong> {item.BookingCode__c}</strong></span>
+                    </p>
+                </template>
+            </div>
+            <img class="slds-align_absolute-center" height="200" width="200" src={icons.success} >
         </div>
     </div>
 </template>

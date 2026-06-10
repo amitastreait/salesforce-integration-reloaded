@@ -9,9 +9,9 @@
         <actionType>outboundMessage</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <nameSegment>Opportunity.Send_Opportunities_to_SAP</nameSegment>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <environments>Default</environments>
     <interviewLabel>Send Opportunity to SAP {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Send Opportunity to SAP</label>
