@@ -30,9 +30,9 @@ public class PostGridAddressVerificationBatch implements Database.Batchable<sObj
         requestBody.addresses = addresses;
         
         HttpRequest request = new HttpRequest();
-        request.setEndpoint('https://api.postgrid.com/v1/addver/verifications/batch');
+        request.setEndpoint('callout:PostGridAPI/addver/verifications/batch');
         request.setMethod('POST');
-        request.setheader('x-api-key',System.Label.PostGridAPIKey);
+        //request.setheader('x-api-key',System.Label.PostGridAPIKey);
         request.setheader('Content-Type','application/json');
         
         System.debug(System.JSON.serializePretty(requestBody));
