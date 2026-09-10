@@ -4,9 +4,10 @@ public class PostGridAddressVerification {
     public static void verifyStructuredAddress(String line1, String line2, String city, String state, String postalCode, String country, String recipient){
         
         HttpRequest request = new HttpRequest();
-        request.setEndpoint(POSTGRID_BASE_URL+'/v1/addver/verifications?geocode=false');
+        // callout:PostGridAPI/v1/addver/verifications/batch
+        request.setEndpoint('callout:PostGridAPI'+'/addver/verifications?geocode=false');
         request.setMethod('POST');
-        request.setheader('x-api-key',System.Label.PostGridAPIKey);
+        //request.setheader('x-api-key',System.Label.PostGridAPIKey);
         request.setheader('Content-Type','application/x-www-form-urlencoded');
         
         /* String requestBody =
