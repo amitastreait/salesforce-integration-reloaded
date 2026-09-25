@@ -1,0 +1,79 @@
+{
+	"summary": "Salesforce Integration Training",
+	"description": "Session on OAuth 2.0 and Google Calendar integration",
+	"location": "Online",
+	"start": {
+		"dateTime": "2026-09-21T10:00:00+05:30",
+		"timeZone": "Asia/Kolkata"
+	},
+	"end": {
+		"dateTime": "2026-09-21T11:00:00+05:30",
+		"timeZone": "Asia/Kolkata"
+	},
+	"attendees": [
+		{
+			"email": "email.sfdcpanther@gmail.com"
+		},
+		{
+			"email": "email.sfdcpanther+new@gmail.com"
+		}
+	],
+	"reminders": {
+		"useDefault": false,
+		"overrides": [
+			{
+				"method": "email",
+				"minutes": 30
+			},
+			{
+				"method": "popup",
+				"minutes": 10
+			}
+		]
+	},
+	"Transform": "AWS::Serverless-2016-10-31",
+	"Resources": {
+		"Api": {
+			"Type": "AWS::Serverless::Api",
+			"Properties": {
+				"Name": {
+					"Fn::Sub": [
+						"${ResourceName} From Stack ${AWS::StackName}",
+						{
+							"ResourceName": "Api"
+						}
+					]
+				},
+				"StageName": "Prod",
+				"DefinitionBody": {
+					"openapi": "3.0",
+					"info": {},
+					"paths": {
+						"/": {
+							"get": {
+								"responses": {}
+							}
+						}
+					}
+				},
+				"EndpointConfiguration": "REGIONAL",
+				"TracingEnabled": true
+			}
+		},
+		"UserPool": {
+			"Type": "AWS::Cognito::UserPool",
+			"Properties": {
+				"AdminCreateUserConfig": {
+					"AllowAdminCreateUserOnly": false
+				},
+				"AliasAttributes": [
+					"email",
+					"preferred_username"
+				],
+				"UserPoolName": {
+					"Fn::Sub": "${AWS::StackName}-UserPool"
+				}
+			}
+		}
+	}
+}

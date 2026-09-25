@@ -1,13 +1,14 @@
 {
 	"orgName": "Acme Enterprise",
 	"hasSampleData": true,
-	"username": "udemy.org@development.care.2024",
+	"username": "udemy.org@development.integration.20276",
 	"edition": "Enterprise",
 	"adminEmail": "amitsingh@zmail.com",
 	"country": "IN",
 	"description": "This is a test description",
 	"features": [
-		"EnableSetPasswordInApi"
+		"EnableSetPasswordInApi",
+		"ApexIntegrationTests"
 	],
 	"settings": {
 		"lightningExperienceSettings": {
