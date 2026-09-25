@@ -7,7 +7,7 @@ scope=https://www.googleapis.com/auth/calendar
 
 https://login.salesforce.com/services/oauth2/success#
 iss=https://accounts.google.com&
-access_token=ya29.a0AX07CmuF532Zc6ZlgFUoT-ex7QC4QSa-xQIU8JlPCQ0206
+access_token=access_token_here
 &token_type=Bearer
 &expires_in=3599
 &scope=https://www.googleapis.com/auth/calendar
