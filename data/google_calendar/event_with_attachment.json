@@ -1,0 +1,46 @@
+{
+    "summary": "Salesforce Integration Training",
+    "description": "Session on OAuth 2.0 and Google Calendar integration",
+    "location": "Online",
+    "start": {
+        "dateTime": "2026-09-21T10:00:00+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "end": {
+        "dateTime": "2026-09-21T11:00:00+05:30",
+        "timeZone": "Asia/Kolkata"
+    },
+    "attachments": [
+        {
+            "fileUrl": "https://drive.google.com/file/d/1U9Wak-hV-mL_4_JpMde5NGu457wt6DkR/view",
+            "title": "OAuth 2.0 Training Material",
+            "mimeType": "application/pdf"
+        },
+        {
+            "fileUrl": "https://drive.google.com/file/d/1-8njRJiPh3Z0YWad-RBpGSwB8sWm2gID/view",
+            "title": "Integration Architecture",
+            "mimeType": "application/pdf"
+        }
+    ],
+    "attendees": [
+        {
+            "email": "email.sfdcpanther@gmail.com"
+        },
+        {
+            "email": "email.sfdcpanther+new@gmail.com"
+        }
+    ],
+    "reminders": {
+        "useDefault": false,
+        "overrides": [
+            {
+                "method": "email",
+                "minutes": 30
+            },
+            {
+                "method": "popup",
+                "minutes": 10
+            }
+        ]
+    }
+}

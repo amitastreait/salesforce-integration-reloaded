@@ -13,7 +13,8 @@ deploy-options.json
 
 # LWC Jest coverage reports
 coverage/
-docs/
+docs/projects
+data/google_calendar/client_details.json
 
 # Logs
 logs
